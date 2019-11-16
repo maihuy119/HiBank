@@ -47,7 +47,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Mật khẩu mới:");
 
-        jLabel4.setText("Xác nhận mật khẩu cũ:");
+        jLabel4.setText("Xác nhận mật khẩu mới:");
 
         jButton1.setText("Xác nhận");
 
@@ -62,10 +62,10 @@ public class ChangePassJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(69, 69, 69)
+                        .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jPasswordField2)))
+                            .addComponent(jPasswordField2)
+                            .addComponent(jPasswordField1)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
