@@ -12,67 +12,67 @@ import java.util.Date;
  * @author ADMIN
  */
 public class KhachHang {
-    private String ma_khach_hang;
-    private String ho_ten;
-    private boolean gioi_tinh;
-    private Date ngay_sinh;
+    private String maKhachHang;
+    private String hoTen;
+    private boolean gioiTinh;
+    private Date ngaySinh;
     private String cmnd;
-    private String que_quan;
-    private String dia_chi_thuong_tru;
-    private String so_dien_thoai;
-    private String nguoi_tao;
-    private Date ngay_tao;
-    private String ghi_chu;
+    private String queQuan;
+    private String diaChiThuongTru;
+    private String soDienThoai;
+    private String nguoiTao;
+    private Date ngayTao;
+    private String ghiChu;
     private String anh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String ma_khach_hang, String ho_ten, boolean gioi_tinh, Date ngay_sinh, String cmnd, String que_quan, String dia_chi_thuong_tru, String so_dien_thoai, String nguoi_tao, Date ngay_tao, String ghi_chu, String anh) {
-        this.ma_khach_hang = ma_khach_hang;
-        this.ho_ten = ho_ten;
-        this.gioi_tinh = gioi_tinh;
-        this.ngay_sinh = ngay_sinh;
+    public KhachHang(String maKhachHang, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String nguoiTao, Date ngayTao, String ghiChu, String anh) {
+        this.maKhachHang = maKhachHang;
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
         this.cmnd = cmnd;
-        this.que_quan = que_quan;
-        this.dia_chi_thuong_tru = dia_chi_thuong_tru;
-        this.so_dien_thoai = so_dien_thoai;
-        this.nguoi_tao = nguoi_tao;
-        this.ngay_tao = ngay_tao;
-        this.ghi_chu = ghi_chu;
+        this.queQuan = queQuan;
+        this.diaChiThuongTru = diaChiThuongTru;
+        this.soDienThoai = soDienThoai;
+        this.nguoiTao = nguoiTao;
+        this.ngayTao = ngayTao;
+        this.ghiChu = ghiChu;
         this.anh = anh;
     }
 
-    public String getMa_khach_hang() {
-        return ma_khach_hang;
+    public String getMaKhachHang() {
+        return maKhachHang;
     }
 
-    public void setMa_khach_hang(String ma_khach_hang) {
-        this.ma_khach_hang = ma_khach_hang;
+    public void setMaKhachHang(String maKhachHang) {
+        this.maKhachHang = maKhachHang;
     }
 
-    public String getHo_ten() {
-        return ho_ten;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setHo_ten(String ho_ten) {
-        this.ho_ten = ho_ten;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public boolean isGioi_tinh() {
-        return gioi_tinh;
+    public boolean isGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setGioi_tinh(boolean gioi_tinh) {
-        this.gioi_tinh = gioi_tinh;
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgay_sinh() {
-        return ngay_sinh;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setNgay_sinh(Date ngay_sinh) {
-        this.ngay_sinh = ngay_sinh;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getCmnd() {
@@ -83,52 +83,52 @@ public class KhachHang {
         this.cmnd = cmnd;
     }
 
-    public String getQue_quan() {
-        return que_quan;
+    public String getQueQuan() {
+        return queQuan;
     }
 
-    public void setQue_quan(String que_quan) {
-        this.que_quan = que_quan;
+    public void setQueQuan(String queQuan) {
+        this.queQuan = queQuan;
     }
 
-    public String getDia_chi_thuong_tru() {
-        return dia_chi_thuong_tru;
+    public String getDiaChiThuongTru() {
+        return diaChiThuongTru;
     }
 
-    public void setDia_chi_thuong_tru(String dia_chi_thuong_tru) {
-        this.dia_chi_thuong_tru = dia_chi_thuong_tru;
+    public void setDiaChiThuongTru(String diaChiThuongTru) {
+        this.diaChiThuongTru = diaChiThuongTru;
     }
 
-    public String getSo_dien_thoai() {
-        return so_dien_thoai;
+    public String getSoDienThoai() {
+        return soDienThoai;
     }
 
-    public void setSo_dien_thoai(String so_dien_thoai) {
-        this.so_dien_thoai = so_dien_thoai;
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 
-    public String getNguoi_tao() {
-        return nguoi_tao;
+    public String getNguoiTao() {
+        return nguoiTao;
     }
 
-    public void setNguoi_tao(String nguoi_tao) {
-        this.nguoi_tao = nguoi_tao;
+    public void setNguoiTao(String nguoiTao) {
+        this.nguoiTao = nguoiTao;
     }
 
-    public Date getNgay_tao() {
-        return ngay_tao;
+    public Date getNgayTao() {
+        return ngayTao;
     }
 
-    public void setNgay_tao(Date ngay_tao) {
-        this.ngay_tao = ngay_tao;
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
     }
 
-    public String getGhi_chu() {
-        return ghi_chu;
+    public String getGhiChu() {
+        return ghiChu;
     }
 
-    public void setGhi_chu(String ghi_chu) {
-        this.ghi_chu = ghi_chu;
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
     public String getAnh() {
@@ -139,10 +139,7 @@ public class KhachHang {
         this.anh = anh;
     }
 
-    @Override
-    public String toString() {
-        return "KhachHang{" + "ma_khach_hang=" + ma_khach_hang + ", ho_ten=" + ho_ten + ", gioi_tinh=" + gioi_tinh + ", ngay_sinh=" + ngay_sinh + ", cmnd=" + cmnd + ", que_quan=" + que_quan + ", dia_chi_thuong_tru=" + dia_chi_thuong_tru + ", so_dien_thoai=" + so_dien_thoai + ", nguoi_tao=" + nguoi_tao + ", ngay_tao=" + ngay_tao + ", ghi_chu=" + ghi_chu + ", anh=" + anh + '}';
-    }
+    
     
     
 }

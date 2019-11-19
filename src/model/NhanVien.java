@@ -12,69 +12,69 @@ import java.util.Date;
  * @author ADMIN
  */
 public class NhanVien {
-    private String ma_nv;
-    private String ho_ten;
-    private boolean gioi_tinh;
-    private Date ngay_sinh;
+    private String maNV;
+    private String hoTen;
+    private boolean gioiTinh;
+    private Date ngaySinh;
     private String cmnd;
-    private String que_quan;
-    private String dia_chi_thuong_tru;
-    private String so_dien_thoai;
-    private String chuc_vu;
+    private String queQuan;
+    private String diaChiThuongTru;
+    private String soDienThoai;
+    private String chucVu;
     private float luong;
-    private Date ngay_cong_tac;
-    private String ghi_chu;
+    private Date ngayCongTac;
+    private String ghiChu;
     private String anh;
 
     public NhanVien() {
     }
 
-    public NhanVien(String ma_nv, String ho_ten, boolean gioi_tinh, Date ngay_sinh, String cmnd, String que_quan, String dia_chi_thuong_tru, String so_dien_thoai, String chuc_vu, float luong, Date ngay_cong_tac, String ghi_chu, String anh) {
-        this.ma_nv = ma_nv;
-        this.ho_ten = ho_ten;
-        this.gioi_tinh = gioi_tinh;
-        this.ngay_sinh = ngay_sinh;
+    public NhanVien(String maNV, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String chucVu, float luong, Date ngayCongTac, String ghiChu, String anh) {
+        this.maNV = maNV;
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
         this.cmnd = cmnd;
-        this.que_quan = que_quan;
-        this.dia_chi_thuong_tru = dia_chi_thuong_tru;
-        this.so_dien_thoai = so_dien_thoai;
-        this.chuc_vu = chuc_vu;
+        this.queQuan = queQuan;
+        this.diaChiThuongTru = diaChiThuongTru;
+        this.soDienThoai = soDienThoai;
+        this.chucVu = chucVu;
         this.luong = luong;
-        this.ngay_cong_tac = ngay_cong_tac;
-        this.ghi_chu = ghi_chu;
+        this.ngayCongTac = ngayCongTac;
+        this.ghiChu = ghiChu;
         this.anh = anh;
     }
 
-    public String getMa_nv() {
-        return ma_nv;
+    public String getMaNV() {
+        return maNV;
     }
 
-    public void setMa_nv(String ma_nv) {
-        this.ma_nv = ma_nv;
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
     }
 
-    public String getHo_ten() {
-        return ho_ten;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setHo_ten(String ho_ten) {
-        this.ho_ten = ho_ten;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public boolean isGioi_tinh() {
-        return gioi_tinh;
+    public boolean isGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setGioi_tinh(boolean gioi_tinh) {
-        this.gioi_tinh = gioi_tinh;
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgay_sinh() {
-        return ngay_sinh;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setNgay_sinh(Date ngay_sinh) {
-        this.ngay_sinh = ngay_sinh;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getCmnd() {
@@ -85,36 +85,36 @@ public class NhanVien {
         this.cmnd = cmnd;
     }
 
-    public String getQue_quan() {
-        return que_quan;
+    public String getQueQuan() {
+        return queQuan;
     }
 
-    public void setQue_quan(String que_quan) {
-        this.que_quan = que_quan;
+    public void setQueQuan(String queQuan) {
+        this.queQuan = queQuan;
     }
 
-    public String getDia_chi_thuong_tru() {
-        return dia_chi_thuong_tru;
+    public String getDiaChiThuongTru() {
+        return diaChiThuongTru;
     }
 
-    public void setDia_chi_thuong_tru(String dia_chi_thuong_tru) {
-        this.dia_chi_thuong_tru = dia_chi_thuong_tru;
+    public void setDiaChiThuongTru(String diaChiThuongTru) {
+        this.diaChiThuongTru = diaChiThuongTru;
     }
 
-    public String getSo_dien_thoai() {
-        return so_dien_thoai;
+    public String getSoDienThoai() {
+        return soDienThoai;
     }
 
-    public void setSo_dien_thoai(String so_dien_thoai) {
-        this.so_dien_thoai = so_dien_thoai;
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
 
-    public String getChuc_vu() {
-        return chuc_vu;
+    public String getChucVu() {
+        return chucVu;
     }
 
-    public void setChuc_vu(String chuc_vu) {
-        this.chuc_vu = chuc_vu;
+    public void setChucVu(String chucVu) {
+        this.chucVu = chucVu;
     }
 
     public float getLuong() {
@@ -125,20 +125,20 @@ public class NhanVien {
         this.luong = luong;
     }
 
-    public Date getNgay_cong_tac() {
-        return ngay_cong_tac;
+    public Date getNgayCongTac() {
+        return ngayCongTac;
     }
 
-    public void setNgay_cong_tac(Date ngay_cong_tac) {
-        this.ngay_cong_tac = ngay_cong_tac;
+    public void setNgayCongTac(Date ngayCongTac) {
+        this.ngayCongTac = ngayCongTac;
     }
 
-    public String getGhi_chu() {
-        return ghi_chu;
+    public String getGhiChu() {
+        return ghiChu;
     }
 
-    public void setGhi_chu(String ghi_chu) {
-        this.ghi_chu = ghi_chu;
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
     public String getAnh() {
@@ -149,10 +149,6 @@ public class NhanVien {
         this.anh = anh;
     }
 
-    @Override
-    public String toString() {
-        return "NhanVien{" + "ma_nv=" + ma_nv + ", ho_ten=" + ho_ten + ", gioi_tinh=" + gioi_tinh + ", ngay_sinh=" + ngay_sinh + ", cmnd=" + cmnd + ", que_quan=" + que_quan + ", dia_chi_thuong_tru=" + dia_chi_thuong_tru + ", so_dien_thoai=" + so_dien_thoai + ", chuc_vu=" + chuc_vu + ", luong=" + luong + ", ngay_cong_tac=" + ngay_cong_tac + ", ghi_chu=" + ghi_chu + ", anh=" + anh + '}';
-    }
-  
+    
     
 }

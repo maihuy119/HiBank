@@ -12,147 +12,143 @@ import java.util.Date;
  * @author ADMIN
  */
 public class HoSo {
-    private String ma_ho_so;
-    private String nguoi_vay;
-    private String loai_hinh_vay;
-    private float so_tien;
-    private String muc_dich;
-    private Date ngay_vay;
-    private String nhan_vien_thuc_hien;
-    private Date ngay_het_han;
-    private String ghi_chu;
-    private float so_tien_lai;
-    private Date ngay_tra;
-    private String thoi_han;
-    private boolean da_thanh_toan;
+    private String maHoSo;
+    private String nguoiVay;
+    private String loaiHinhVay;
+    private float soTien;
+    private String mucDich;
+    private Date ngayVay;
+    private String nhanVienThucHien;
+    private Date ngayHetHan;
+    private String ghiChu;
+    private float soTienLai;
+    private Date ngayTra;
+    private String thoiHan;
+    private boolean daThanhToan;
 
     public HoSo() {
     }
 
-    public HoSo(String ma_ho_so, String nguoi_vay, String loai_hinh_vay, float so_tien, String muc_dich, Date ngay_vay, String nhan_vien_thuc_hien, Date ngay_het_han, String ghi_chu, float so_tien_lai, Date ngay_tra, String thoi_han, boolean da_thanh_toan) {
-        this.ma_ho_so = ma_ho_so;
-        this.nguoi_vay = nguoi_vay;
-        this.loai_hinh_vay = loai_hinh_vay;
-        this.so_tien = so_tien;
-        this.muc_dich = muc_dich;
-        this.ngay_vay = ngay_vay;
-        this.nhan_vien_thuc_hien = nhan_vien_thuc_hien;
-        this.ngay_het_han = ngay_het_han;
-        this.ghi_chu = ghi_chu;
-        this.so_tien_lai = so_tien_lai;
-        this.ngay_tra = ngay_tra;
-        this.thoi_han = thoi_han;
-        this.da_thanh_toan = da_thanh_toan;
+    public HoSo(String maHoSo, String nguoiVay, String loaiHinhVay, float soTien, String mucDich, Date ngayVay, String nhanVienThucHien, Date ngayHetHan, String ghiChu, float soTienLai, Date ngayTra, String thoiHan, boolean daThanhToan) {
+        this.maHoSo = maHoSo;
+        this.nguoiVay = nguoiVay;
+        this.loaiHinhVay = loaiHinhVay;
+        this.soTien = soTien;
+        this.mucDich = mucDich;
+        this.ngayVay = ngayVay;
+        this.nhanVienThucHien = nhanVienThucHien;
+        this.ngayHetHan = ngayHetHan;
+        this.ghiChu = ghiChu;
+        this.soTienLai = soTienLai;
+        this.ngayTra = ngayTra;
+        this.thoiHan = thoiHan;
+        this.daThanhToan = daThanhToan;
     }
 
-    public String getMa_ho_so() {
-        return ma_ho_so;
+    public String getMaHoSo() {
+        return maHoSo;
     }
 
-    public void setMa_ho_so(String ma_ho_so) {
-        this.ma_ho_so = ma_ho_so;
+    public void setMaHoSo(String maHoSo) {
+        this.maHoSo = maHoSo;
     }
 
-    public String getNguoi_vay() {
-        return nguoi_vay;
+    public String getNguoiVay() {
+        return nguoiVay;
     }
 
-    public void setNguoi_vay(String nguoi_vay) {
-        this.nguoi_vay = nguoi_vay;
+    public void setNguoiVay(String nguoiVay) {
+        this.nguoiVay = nguoiVay;
     }
 
-    public String getLoai_hinh_vay() {
-        return loai_hinh_vay;
+    public String getLoaiHinhVay() {
+        return loaiHinhVay;
     }
 
-    public void setLoai_hinh_vay(String loai_hinh_vay) {
-        this.loai_hinh_vay = loai_hinh_vay;
+    public void setLoaiHinhVay(String loaiHinhVay) {
+        this.loaiHinhVay = loaiHinhVay;
     }
 
-    public float getSo_tien() {
-        return so_tien;
+    public float getSoTien() {
+        return soTien;
     }
 
-    public void setSo_tien(float so_tien) {
-        this.so_tien = so_tien;
+    public void setSoTien(float soTien) {
+        this.soTien = soTien;
     }
 
-    public String getMuc_dich() {
-        return muc_dich;
+    public String getMucDich() {
+        return mucDich;
     }
 
-    public void setMuc_dich(String muc_dich) {
-        this.muc_dich = muc_dich;
+    public void setMucDich(String mucDich) {
+        this.mucDich = mucDich;
     }
 
-    public Date getNgay_vay() {
-        return ngay_vay;
+    public Date getNgayVay() {
+        return ngayVay;
     }
 
-    public void setNgay_vay(Date ngay_vay) {
-        this.ngay_vay = ngay_vay;
+    public void setNgayVay(Date ngayVay) {
+        this.ngayVay = ngayVay;
     }
 
-    public String getNhan_vien_thuc_hien() {
-        return nhan_vien_thuc_hien;
+    public String getNhanVienThucHien() {
+        return nhanVienThucHien;
     }
 
-    public void setNhan_vien_thuc_hien(String nhan_vien_thuc_hien) {
-        this.nhan_vien_thuc_hien = nhan_vien_thuc_hien;
+    public void setNhanVienThucHien(String nhanVienThucHien) {
+        this.nhanVienThucHien = nhanVienThucHien;
     }
 
-    public Date getNgay_het_han() {
-        return ngay_het_han;
+    public Date getNgayHetHan() {
+        return ngayHetHan;
     }
 
-    public void setNgay_het_han(Date ngay_het_han) {
-        this.ngay_het_han = ngay_het_han;
+    public void setNgayHetHan(Date ngayHetHan) {
+        this.ngayHetHan = ngayHetHan;
     }
 
-    public String getGhi_chu() {
-        return ghi_chu;
+    public String getGhiChu() {
+        return ghiChu;
     }
 
-    public void setGhi_chu(String ghi_chu) {
-        this.ghi_chu = ghi_chu;
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
-    public float getSo_tien_lai() {
-        return so_tien_lai;
+    public float getSoTienLai() {
+        return soTienLai;
     }
 
-    public void setSo_tien_lai(float so_tien_lai) {
-        this.so_tien_lai = so_tien_lai;
+    public void setSoTienLai(float soTienLai) {
+        this.soTienLai = soTienLai;
     }
 
-    public Date getNgay_tra() {
-        return ngay_tra;
+    public Date getNgayTra() {
+        return ngayTra;
     }
 
-    public void setNgay_tra(Date ngay_tra) {
-        this.ngay_tra = ngay_tra;
+    public void setNgayTra(Date ngayTra) {
+        this.ngayTra = ngayTra;
     }
 
-    public String getThoi_han() {
-        return thoi_han;
+    public String getThoiHan() {
+        return thoiHan;
     }
 
-    public void setThoi_han(String thoi_han) {
-        this.thoi_han = thoi_han;
+    public void setThoiHan(String thoiHan) {
+        this.thoiHan = thoiHan;
     }
 
-    public boolean isDa_thanh_toan() {
-        return da_thanh_toan;
+    public boolean isDaThanhToan() {
+        return daThanhToan;
     }
 
-    public void setDa_thanh_toan(boolean da_thanh_toan) {
-        this.da_thanh_toan = da_thanh_toan;
+    public void setDaThanhToan(boolean daThanhToan) {
+        this.daThanhToan = daThanhToan;
     }
 
-    @Override
-    public String toString() {
-        return "HoSo{" + "ma_ho_so=" + ma_ho_so + ", nguoi_vay=" + nguoi_vay + ", loai_hinh_vay=" + loai_hinh_vay + ", so_tien=" + so_tien + ", muc_dich=" + muc_dich + ", ngay_vay=" + ngay_vay + ", nhan_vien_thuc_hien=" + nhan_vien_thuc_hien + ", ngay_het_han=" + ngay_het_han + ", ghi_chu=" + ghi_chu + ", so_tien_lai=" + so_tien_lai + ", ngay_tra=" + ngay_tra + ", thoi_han=" + thoi_han + ", da_thanh_toan=" + da_thanh_toan + '}';
-    }
     
     
 }
