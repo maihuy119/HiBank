@@ -35,7 +35,7 @@ public class KhachHangDAO {
     }
 
     public void update(KhachHang model) {
-        String sql = "UPDATE KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi_thuong_tru=?, so_dien_thoai=?, nguoi_tao=?, ngay_tao=?, ghi_chu=?, anh=? WHERE ma_khach_hang=?";
+        String sql = "UPDATE tbl_KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi_thuong_tru=?, so_dien_thoai=?, nguoi_tao=?, ngay_tao=?, ghi_chu=?, anh=? WHERE ma_khach_hang=?";
         JdbcHelper.executeUpdate(sql,                
                 model.getHoTen(),
                 model.isGioiTinh(),
@@ -52,7 +52,7 @@ public class KhachHangDAO {
     }
 
     public void delete(String MaKH) {
-        String sql = "DELETE FROM KhachHang WHERE ma_khach_hang=?";
+        String sql = "DELETE FROM tbl_KhachHang WHERE ma_khach_hang=?";
         JdbcHelper.executeUpdate(sql, MaKH);
     }
     
@@ -62,7 +62,7 @@ public class KhachHangDAO {
     }
 
     public KhachHang findById(String makh) {
-        String sql = "SELECT * FROM tbl_KhachHang WHERE MaNV=?";
+        String sql = "SELECT * FROM tbl_KhachHang WHERE ma_khach_hang=?";
         List<KhachHang> list = select(sql, makh);
         return list.size() > 0 ? list.get(0) : null;
     }
