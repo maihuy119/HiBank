@@ -23,16 +23,34 @@ public class NhanVienDAO {
         JdbcHelper.executeUpdate(sql,
                 model.getMaNV(),
                 model.getHoTen(),
-                model.getHoTen(),
-                model.isVaiTro());
+                model.isGioiTinh(),
+                model.getNgaySinh(),
+                model.getCmnd(),
+                model.getQueQuan(),
+                model.getDiaChiThuongTru(),
+                model.getSoDienThoai(),
+                model.getChucVu(),
+                model.getLuong(),
+                model.getNgayCongTac(),
+                model.getGhiChu(),
+                model.getAnh());
     }
 
     public void update(NhanVien model) {
-        String sql = "UPDATE NhanVien SET MatKhau=?, HoTen=?, VaiTro=? WHERE MaNV=?";
+        String sql = "UPDATE tbl_NhanVien SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi_thuong_tru=?, so_dien_thoai=?, chuc_vu=?, luong=?, ngay_cong_tac=?, ghi_chu=?, anh=?  WHERE ma_nv=?";
         JdbcHelper.executeUpdate(sql,
-                model.getMatKhau(),
                 model.getHoTen(),
-                model.isVaiTro(),
+                model.isGioiTinh(),
+                model.getNgaySinh(),
+                model.getCmnd(),
+                model.getQueQuan(),
+                model.getDiaChiThuongTru(),
+                model.getSoDienThoai(),
+                model.getChucVu(),
+                model.getLuong(),
+                model.getNgayCongTac(),
+                model.getGhiChu(),
+                model.getAnh(),
                 model.getMaNV());
     }
 
@@ -47,7 +65,7 @@ public class NhanVienDAO {
     }
 
     public NhanVien findById(String manv) {
-        String sql = "SELECT * FROM tbl_NhanVien WHERE MaNV=?";
+        String sql = "SELECT * FROM tbl_NhanVien WHERE ma_nv=?";
         List<NhanVien> list = select(sql, manv);
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -73,10 +91,19 @@ public class NhanVienDAO {
 
     private NhanVien readFromResultSet(ResultSet rs) throws SQLException {
         NhanVien model = new NhanVien();
-        model.setMaNV(rs.getString("MaNV"));
-        model.setMatKhau(rs.getString("MatKhau"));
-        model.setHoTen(rs.getString("HoTen"));
-        model.setVaiTro(rs.getBoolean("VaiTro"));
+        model.setMaNV(rs.getString("ma_nv"));
+        model.setHoTen(rs.getString("ho_ten"));
+        model.setGioiTinh(rs.getBoolean("gioi_tinh"));
+        model.setNgaySinh(rs.getDate("ngay_sinh"));
+        model.setCmnd(rs.getString("cmnd"));
+        model.setQueQuan(rs.getString("que_quan"));
+        model.setDiaChiThuongTru(rs.getString("dia_chi_thuong_tru"));
+        model.setSoDienThoai(rs.getString("so_dien_thoai"));
+        model.setChucVu(rs.getString("chuc_vu"));
+        model.setLuong(rs.getFloat("luong"));
+        model.setNgayCongTac(rs.getDate("ngay_cong_tac"));
+        model.setAnh(rs.getString("anh"));
+        model.setGhiChu(rs.getString("ghi_chu"));
         return model;
     }
 
