@@ -29,10 +29,10 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         pnlHocVienKhac = new javax.swing.JPanel();
-        txtDiem = new javax.swing.JTextField();
-        btnThem = new javax.swing.JButton();
+        txtTimKiem = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDanhSach = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,10 +42,10 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
 
         pnlHocVienKhac.setBorder(javax.swing.BorderFactory.createTitledBorder("TÌM KIỂM"));
 
-        btnThem.setText("Tìm");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
+        btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+                btnTimActionPerformed(evt);
             }
         });
 
@@ -55,9 +55,9 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             pnlHocVienKhacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHocVienKhacLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtDiem)
+                .addComponent(txtTimKiem)
                 .addGap(18, 18, 18)
-                .addComponent(btnThem)
+                .addComponent(btnTim)
                 .addContainerGap())
         );
         pnlHocVienKhacLayout.setVerticalGroup(
@@ -65,12 +65,12 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             .addGroup(pnlHocVienKhacLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlHocVienKhacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem))
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim))
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -81,7 +81,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
                 "Mã hồ sơ", "Người vay ", "Loại hình vay", "Số tiền vay", "Ngày vay", "Nhân viên thực hiện", "Ngày hết hạn", "Ghi chú"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDanhSach);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,10 +112,10 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         
         
-    }//GEN-LAST:event_btnThemActionPerformed
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +153,11 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlHocVienKhac;
-    private javax.swing.JTextField txtDiem;
+    private javax.swing.JTable tblDanhSach;
+    private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 }

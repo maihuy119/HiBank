@@ -5,6 +5,7 @@
  */
 package dao;
 
+import helper.DateHelper;
 import helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -107,4 +108,11 @@ public class NhanVienDAO {
         return model;
     }
 
+    //test DAO
+    public static void main(String[] args) {
+        NhanVienDAO dao = new NhanVienDAO();
+        NhanVien nv = new NhanVien("1", "huy", true, DateHelper.toDate("01/01/2000"), "206288820", "null", "null", "0123456789", "nv", 0, DateHelper.toDate("01/01/2019"), "null", "null");
+        
+        dao.insert(nv);
+    }
 }
