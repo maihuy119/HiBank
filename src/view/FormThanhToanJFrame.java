@@ -40,8 +40,17 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblTong = new javax.swing.JLabel();
+        btnXacNhan = new javax.swing.JButton();
+        lblHoTenNguoiVay = new javax.swing.JLabel();
+        lblMaHoSo = new javax.swing.JLabel();
+        lblLoaiHinhVay = new javax.swing.JLabel();
+        lblNgayVay = new javax.swing.JLabel();
+        lblKyHan = new javax.swing.JLabel();
+        lblNgayHetHan = new javax.swing.JLabel();
+        lblSoTien = new javax.swing.JLabel();
+        lblLaiSuat = new javax.swing.JLabel();
+        lblSoTienLai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,10 +79,28 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("Tổng số tiền phải trả:");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("0 VND");
+        lblTong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTong.setText("0 VND");
 
-        jButton1.setText("Xác nhận thanh toán");
+        btnXacNhan.setText("Xác nhận thanh toán");
+
+        lblHoTenNguoiVay.setText("Nguyễn Văn A");
+
+        lblMaHoSo.setText("HS1");
+
+        lblLoaiHinhVay.setText("LH1");
+
+        lblNgayVay.setText("01/01/2019");
+
+        lblKyHan.setText("1 tháng");
+
+        lblNgayHetHan.setText("03/03/2019");
+
+        lblSoTien.setText("10000");
+
+        lblLaiSuat.setText("10%");
+
+        lblSoTienLai.setText("5000");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,15 +111,26 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSoTienLai)
+                            .addComponent(lblLaiSuat)
+                            .addComponent(lblSoTien)
+                            .addComponent(lblNgayHetHan)
+                            .addComponent(lblKyHan)
+                            .addComponent(lblNgayVay)
+                            .addComponent(lblLoaiHinhVay)
+                            .addComponent(lblMaHoSo)
+                            .addComponent(lblHoTenNguoiVay))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -104,7 +142,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(lblTong)
                 .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
@@ -112,7 +150,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
                 .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnXacNhan)
                 .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
@@ -123,31 +161,49 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblHoTenNguoiVay))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblMaHoSo))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblLoaiHinhVay))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(lblNgayVay))
                 .addGap(21, 21, 21)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblKyHan))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(lblNgayHetHan))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblSoTien))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblLaiSuat))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(lblSoTienLai))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel7))
+                    .addComponent(lblTong))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnXacNhan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,7 +246,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnXacNhan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -200,10 +256,19 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblHoTenNguoiVay;
+    private javax.swing.JLabel lblKyHan;
+    private javax.swing.JLabel lblLaiSuat;
+    private javax.swing.JLabel lblLoaiHinhVay;
+    private javax.swing.JLabel lblMaHoSo;
+    private javax.swing.JLabel lblNgayHetHan;
+    private javax.swing.JLabel lblNgayVay;
+    private javax.swing.JLabel lblSoTien;
+    private javax.swing.JLabel lblSoTienLai;
+    private javax.swing.JLabel lblTong;
     // End of variables declaration//GEN-END:variables
 }
