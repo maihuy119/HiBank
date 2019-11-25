@@ -5,6 +5,11 @@
  */
 package view;
 
+import dao.NhanVienDAO;
+import helper.DialogHelper;
+import helper.ShareHelper;
+import model.NhanVien;
+
 /**
  *
  * @author maihu
@@ -20,12 +25,49 @@ public class LoginJDialog extends javax.swing.JDialog {
         init();
     }
 
-
     void init() {
         setLocationRelativeTo(null);
     }
+    NhanVienDAO dao = new NhanVienDAO();
 
-    
+    void Login() {
+        String username = txtMaNV.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        try {
+            NhanVien nhanVien = dao.findByUN(username);        
+            if (nhanVien != null) {
+                String matKhau2 = nhanVien.getPass();
+                System.out.println(matKhau.equals(matKhau2));
+                if (matKhau.equals(matKhau2)) {
+                    ShareHelper.USER = nhanVien;
+                    DialogHelper.alert(this, "Đăng nhập thành công!");
+                    this.dispose();
+                } else {
+                    DialogHelper.alert(this, "Sai mật khẩu!");
+                }
+            } else {
+                DialogHelper.alert(this, "Sai tên đăng nhập!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    void exit() {
+        if (DialogHelper.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
+            System.exit(0);
+        }
+    }
+
+    public boolean isvalid() {
+        if (txtMaNV.getText().length() == 0) {
+            DialogHelper.alert(this, "Vui lòng nhập tên đăng nhập!");
+            return false;
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +96,11 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         lblMaNV.setText("Tên đăng nhập");
 
+        txtMaNV.setText("admin2");
+
         lblMatKhau.setText("Mật khẩu");
+
+        txtMatKhau.setText("123");
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(0, 102, 51));
@@ -119,11 +165,13 @@ public class LoginJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-     
+        if (this.isvalid()) {
+            this.Login();
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
-      
+        this.exit();
     }//GEN-LAST:event_btnKetThucActionPerformed
 
     /**

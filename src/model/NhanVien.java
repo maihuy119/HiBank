@@ -12,7 +12,8 @@ import java.util.Date;
  * @author ADMIN
  */
 public class NhanVien {
-    private String maNV;
+
+    private int maNV;
     private String hoTen;
     private boolean gioiTinh;
     private Date ngaySinh;
@@ -20,16 +21,19 @@ public class NhanVien {
     private String queQuan;
     private String diaChiThuongTru;
     private String soDienThoai;
+    private String email;
     private String chucVu;
     private float luong;
     private Date ngayCongTac;
     private String ghiChu;
     private String anh;
+    private String username;
+    private String pass;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String chucVu, float luong, Date ngayCongTac, String ghiChu, String anh) {
+    public NhanVien(int maNV, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String email, String chucVu, float luong, Date ngayCongTac, String ghiChu, String anh, String username, String pass) {
         this.maNV = maNV;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -38,18 +42,21 @@ public class NhanVien {
         this.queQuan = queQuan;
         this.diaChiThuongTru = diaChiThuongTru;
         this.soDienThoai = soDienThoai;
+        this.email = email;
         this.chucVu = chucVu;
         this.luong = luong;
         this.ngayCongTac = ngayCongTac;
         this.ghiChu = ghiChu;
         this.anh = anh;
+        this.username = username;
+        this.pass = pass;
     }
 
-    public String getMaNV() {
+    public int getMaNV() {
         return maNV;
     }
 
-    public void setMaNV(String maNV) {
+    public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
 
@@ -109,6 +116,14 @@ public class NhanVien {
         this.soDienThoai = soDienThoai;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getChucVu() {
         return chucVu;
     }
@@ -149,6 +164,20 @@ public class NhanVien {
         this.anh = anh;
     }
 
-    
-    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
 }
