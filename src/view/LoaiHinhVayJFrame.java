@@ -5,6 +5,17 @@
  */
 package view;
 
+import dao.KhachHangDAO;
+import dao.LoaiHinhVayDAO;
+import helper.DateHelper;
+import helper.DialogHelper;
+import helper.ShareHelper;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.KhachHang;
+import model.LoaiHinhVay;
+
 /**
  *
  * @author maihu
@@ -18,6 +29,115 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    LoaiHinhVayDAO dao = new LoaiHinhVayDAO();
+
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
+    }
+
+    void load() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
+        model.setRowCount(0);
+        try {
+            List<LoaiHinhVay> list = dao.select();
+            for (LoaiHinhVay lh : list) {
+                Object[] row = {
+                    lh.getMaLoai(),
+                    lh.getTenLoai(),
+                    lh.getLaiSuat()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    private void clear() {
+        txtMaLoai.setText("");
+        txtTenLoai.setText("");
+        txtLaiSuat.setText("");
+    }
+
+    void setModel(LoaiHinhVay model) {
+        txtMaLoai.setText(model.getMaLoai());
+        txtTenLoai.setText(model.getTenLoai());
+        txtLaiSuat.setText(String.valueOf(model.getLaiSuat()));
+    }
+
+    LoaiHinhVay getModel() {
+        LoaiHinhVay model = new LoaiHinhVay();
+        model.setMaLoai(txtMaLoai.getText());
+        model.setTenLoai(txtTenLoai.getText());
+        model.setLaiSuat(Double.valueOf(txtLaiSuat.getText()));
+        return model;
+    }
+
+    void setStatus(boolean insertable) {
+
+    }
+
+    void insert() {
+        KhachHang model = getModel();
+        model.setNgayTao(new Date());
+        try {
+            dao.insert(model);
+            this.clear();
+            this.load();
+            DialogHelper.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogHelper.alert(this, "Thêm mới thất bại!");
+            System.out.println(e.toString());
+        }
+    }
+
+    void edit() {
+        try {
+            int makh = (int) tblDanhSach.getValueAt(this.index, 0);
+            KhachHang model = dao.findById(makh);
+            if (model != null) {
+                this.setModel(model);
+                this.setStatus(false);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void update() {
+        KhachHang model = getModel();
+        model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
+        System.out.println(model.getMaKhachHang() + "    " +model.getNgaySinh());
+        try {
+            dao.update(model);
+            this.load();
+            DialogHelper.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Cập nhật thất bại!");
+            e.printStackTrace();
+        }
+
+    }
+
+    void delete() {
+
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa khách hàng này?")) {
+            String makh = txtMaKH.getText();
+            try {
+                dao.delete(makh);
+                this.load();
+                this.clear();
+                DialogHelper.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Xóa thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

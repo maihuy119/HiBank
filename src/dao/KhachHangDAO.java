@@ -18,9 +18,8 @@ import model.KhachHang;
  */
 public class KhachHangDAO {
     public void insert(KhachHang model) {
-        String sql = "INSERT INTO tbl_KhachHang (ma_khach_hang, ho_ten, gioi_tinh, ngay_sinh, cmnd, que_quan, dia_chi_thuong_tru, so_dien_thoai, nguoi_tao, ngay_tao, ghi_chu, anh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_KhachHang (ho_ten, gioi_tinh, ngay_sinh, cmnd, que_quan, dia_chi, so_dien_thoai, nhan_vien_tao, ngay_tao, ghi_chu, anh, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
-                model.getMaKhachHang(),
                 model.getHoTen(),
                 model.isGioiTinh(),
                 model.getNgaySinh(),
@@ -31,11 +30,12 @@ public class KhachHangDAO {
                 model.getNguoiTao(),
                 model.getNgayTao(),
                 model.getGhiChu(),
-                model.getAnh());
+                model.getAnh(),
+                model.getEmail());
     }
 
     public void update(KhachHang model) {
-        String sql = "UPDATE tbl_KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi_thuong_tru=?, so_dien_thoai=?, nguoi_tao=?, ngay_tao=?, ghi_chu=?, anh=? WHERE ma_khach_hang=?";
+        String sql = "UPDATE tbl_KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi=?, so_dien_thoai=?, nhan_vien_tao=?, ngay_tao=?, ghi_chu=?, anh=?, email=? WHERE ma_khach_hang=?";
         JdbcHelper.executeUpdate(sql,                
                 model.getHoTen(),
                 model.isGioiTinh(),
@@ -48,6 +48,7 @@ public class KhachHangDAO {
                 model.getNgayTao(),
                 model.getGhiChu(),
                 model.getAnh(),
+                model.getEmail(),
                 model.getMaKhachHang());
     }
 
@@ -61,7 +62,7 @@ public class KhachHangDAO {
         return select(sql);
     }
 
-    public KhachHang findById(String makh) {
+    public KhachHang findById(int makh) {
         String sql = "SELECT * FROM tbl_KhachHang WHERE ma_khach_hang=?";
         List<KhachHang> list = select(sql, makh);
         return list.size() > 0 ? list.get(0) : null;
@@ -88,15 +89,16 @@ public class KhachHangDAO {
 
     private KhachHang readFromResultSet(ResultSet rs) throws SQLException {
         KhachHang model = new KhachHang();
-        model.setMaKhachHang(rs.getString("ma_khach_hang"));
+        model.setMaKhachHang(rs.getInt("ma_khach_hang"));
         model.setHoTen(rs.getString("ho_ten"));
         model.setGioiTinh(rs.getBoolean("gioi_tinh"));
         model.setNgaySinh(rs.getDate("ngay_sinh"));
         model.setCmnd(rs.getString("cmnd"));
         model.setQueQuan(rs.getString("que_quan"));
-        model.setDiaChiThuongTru(rs.getString("dia_chi_thuong_tru"));
+        model.setDiaChiThuongTru(rs.getString("dia_chi"));
         model.setSoDienThoai(rs.getString("so_dien_thoai"));
-        model.setNguoiTao(rs.getString("nguoi_tao"));
+        model.setEmail(rs.getString("email"));
+        model.setNguoiTao(rs.getString("nhan_vien_tao"));
         model.setNgayTao(rs.getDate("ngay_tao"));
         model.setGhiChu(rs.getString("ghi_chu"));
         model.setAnh(rs.getString("anh"));

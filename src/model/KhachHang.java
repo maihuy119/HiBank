@@ -12,7 +12,8 @@ import java.util.Date;
  * @author ADMIN
  */
 public class KhachHang {
-    private String maKhachHang;
+
+    private int maKhachHang;
     private String hoTen;
     private boolean gioiTinh;
     private Date ngaySinh;
@@ -24,11 +25,12 @@ public class KhachHang {
     private Date ngayTao;
     private String ghiChu;
     private String anh;
+    private String email;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKhachHang, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String nguoiTao, Date ngayTao, String ghiChu, String anh) {
+    public KhachHang(int maKhachHang, String hoTen, boolean gioiTinh, Date ngaySinh, String cmnd, String queQuan, String diaChiThuongTru, String soDienThoai, String nguoiTao, Date ngayTao, String ghiChu, String anh, String email) {
         this.maKhachHang = maKhachHang;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -41,13 +43,14 @@ public class KhachHang {
         this.ngayTao = ngayTao;
         this.ghiChu = ghiChu;
         this.anh = anh;
+        this.email = email;
     }
 
-    public String getMaKhachHang() {
+    public int getMaKhachHang() {
         return maKhachHang;
     }
 
-    public void setMaKhachHang(String maKhachHang) {
+    public void setMaKhachHang(int maKhachHang) {
         this.maKhachHang = maKhachHang;
     }
 
@@ -139,7 +142,12 @@ public class KhachHang {
         this.anh = anh;
     }
 
-    
-    
-    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
