@@ -30,6 +30,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     }
 
     LoaiHinhVayDAO dao = new LoaiHinhVayDAO();
+    int index = 0;
 
     void init() {
         setIconImage(ShareHelper.APP_ICON);
@@ -79,123 +80,63 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
 
     }
 
-//    void insert() {
-//        KhachHang model = getModel();
+    void insert() {
+        LoaiHinhVay model = getModel();
 //        model.setNgayTao(new Date());
-//        try {
-//            dao.insert(model);
-//            this.clear();
-//            this.load();
-//            DialogHelper.alert(this, "Thêm mới thành công!");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            DialogHelper.alert(this, "Thêm mới thất bại!");
-//            System.out.println(e.toString());
-//        }
-//    }
-//
-//    void edit() {
-//        try {
-//            int makh = (int) tblDanhSach.getValueAt(this.index, 0);
-//            KhachHang model = dao.findById(makh);
-//            if (model != null) {
-//                this.setModel(model);
-//                this.setStatus(false);
-//            }
-//        } catch (Exception e) {
-//            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    void update() {
-//        KhachHang model = getModel();
-//        model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
-//        System.out.println(model.getMaKhachHang() + "    " +model.getNgaySinh());
-//        try {
-//            dao.update(model);
-//            this.load();
-//            DialogHelper.alert(this, "Cập nhật thành công!");
-//        } catch (Exception e) {
-//            DialogHelper.alert(this, "Cập nhật thất bại!");
-//            e.printStackTrace();void insert() {
-//        KhachHang model = getModel();
-//        model.setNgayTao(new Date());
-//        try {
-//            dao.insert(model);
-//            this.clear();
-//            this.load();
-//            DialogHelper.alert(this, "Thêm mới thành công!");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            DialogHelper.alert(this, "Thêm mới thất bại!");
-//            System.out.println(e.toString());
-//        }
-//    }
-//
-//    void edit() {
-//        try {
-//            int makh = (int) tblDanhSach.getValueAt(this.index, 0);
-//            KhachHang model = dao.findById(makh);
-//            if (model != null) {
-//                this.setModel(model);
-//                this.setStatus(false);
-//            }
-//        } catch (Exception e) {
-//            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    void update() {
-//        KhachHang model = getModel();
-//        model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
-//        System.out.println(model.getMaKhachHang() + "    " +model.getNgaySinh());
-//        try {
-//            dao.update(model);
-//            this.load();
-//            DialogHelper.alert(this, "Cập nhật thành công!");
-//        } catch (Exception e) {
-//            DialogHelper.alert(this, "Cập nhật thất bại!");
-//            e.printStackTrace();
-//        }
-//
-//    }
-//
-//    void delete() {
-//
-//        if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa khách hàng này?")) {
-//            String makh = txtMaKH.getText();
-//            try {
-//                dao.delete(makh);
-//                this.load();
-//                this.clear();
-//                DialogHelper.alert(this, "Xóa thành công!");
-//            } catch (Exception e) {
-//                DialogHelper.alert(this, "Xóa thất bại!");
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//        }
-//
-//    }
-//
-//    void delete() {
-//
-//        if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa khách hàng này?")) {
-//            String makh = txtMaKH.getText();
-//            try {
-//                dao.delete(makh);
-//                this.load();
-//                this.clear();
-//                DialogHelper.alert(this, "Xóa thành công!");
-//            } catch (Exception e) {
-//                DialogHelper.alert(this, "Xóa thất bại!");
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+        try {
+            dao.insert(model);
+            this.clear();
+            this.load();
+            DialogHelper.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogHelper.alert(this, "Thêm mới thất bại!");
+            System.out.println(e.toString());
+        }
+    }
+
+    void edit() {
+        try {
+            String malh = (String) tblDanhSach.getValueAt(this.index, 0);
+            LoaiHinhVay model = dao.findById(malh);
+            if (model != null) {
+                this.setModel(model);
+                this.setStatus(false);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void update() {
+        LoaiHinhVay model = getModel();
+        try {
+            dao.update(model);
+            this.load();
+            DialogHelper.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Cập nhật thất bại!");
+            e.printStackTrace();
+        }
+    }
+
+    void delete() {
+
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa loại hình vay này?")) {
+            String malh = txtMaLoai.getText();
+            try {
+                dao.delete(malh);
+                this.load();
+                this.clear();
+                DialogHelper.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Xóa thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -206,7 +147,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         pnlCapNhat = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -224,6 +165,11 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QUẢN LÝ LOẠI HÌNH VAY");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -236,12 +182,32 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
         jLabel4.setText("Lãi suất:");
 
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCapNhatLayout = new javax.swing.GroupLayout(pnlCapNhat);
         pnlCapNhat.setLayout(pnlCapNhatLayout);
@@ -249,15 +215,15 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCapNhatLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTenLoai)
+                        .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTenLoai, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                             .addComponent(txtMaLoai)
                             .addComponent(txtLaiSuat)))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
@@ -265,9 +231,9 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         pnlCapNhatLayout.setVerticalGroup(
@@ -289,12 +255,12 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMoi)
                     .addComponent(btnThem)
-                    .addComponent(btnXoa)
-                    .addComponent(btnSua))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("CẬP NHẬT", pnlCapNhat);
+        tabs.addTab("CẬP NHẬT", pnlCapNhat);
 
         tblDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -315,6 +281,11 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDanhSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhSachMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDanhSach);
 
         javax.swing.GroupLayout pnlDanhSachLayout = new javax.swing.GroupLayout(pnlDanhSach);
@@ -330,7 +301,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("DANH SÁCH", pnlDanhSach);
+        tabs.addTab("DANH SÁCH", pnlDanhSach);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,7 +310,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(tabs)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -351,12 +322,42 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.index = tblDanhSach.rowAtPoint(evt.getPoint());
+            if (this.index >= 0) {
+                this.edit();
+                tabs.setSelectedIndex(0);
+            }
+        }
+    }//GEN-LAST:event_tblDanhSachMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.load();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        this.clear();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        this.insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        this.delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        this.update();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,9 +404,9 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pnlCapNhat;
     private javax.swing.JPanel pnlDanhSach;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblDanhSach;
     private javax.swing.JTextField txtLaiSuat;
     private javax.swing.JTextField txtMaLoai;

@@ -18,7 +18,7 @@ import model.LoaiHinhVay;
  */
 public class LoaiHinhVayDAO {
     public void insert(LoaiHinhVay model) {
-        String sql = "INSERT INTO tbl_LoaiHinhVay (ma_loai_hinh, ten_loai_hinh, lai_suat, thoi_han) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_LoaiHinhVay (ma_loai_hinh, ten_loai_hinh, lai_suat) VALUES (?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
                 model.getMaLoai(),
                 model.getTenLoai(),
@@ -26,7 +26,7 @@ public class LoaiHinhVayDAO {
     }
 
     public void update(LoaiHinhVay model) {
-        String sql = "UPDATE LoaiHinhVay SET ten_loai_hinh=?, lai_suat=?, thoi_han=? WHERE ma_loai_hinh=?";
+        String sql = "UPDATE tbl_LoaiHinhVay SET ten_loai_hinh=?, lai_suat=? WHERE ma_loai_hinh=?";
         JdbcHelper.executeUpdate(sql,                
                 model.getTenLoai(),
                 model.getLaiSuat(),
@@ -71,7 +71,7 @@ public class LoaiHinhVayDAO {
     private LoaiHinhVay readFromResultSet(ResultSet rs) throws SQLException {
         LoaiHinhVay model = new LoaiHinhVay();
         model.setMaLoai(rs.getString("ma_loai_hinh"));
-        model.setTenLoai(rs.getString("ten_loai"));
+        model.setTenLoai(rs.getString("ten_loai_hinh"));
         model.setLaiSuat(rs.getDouble("lai_suat"));
         return model;
     }
