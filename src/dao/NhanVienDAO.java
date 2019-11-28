@@ -57,6 +57,13 @@ public class NhanVienDAO {
                 model.getMaNV());
     }
 
+    public void changePass(String pass, int ma_nv) {
+        String sql = "UPDATE tbl_NhanVien SET password=?  WHERE ma_nv=?";
+        JdbcHelper.executeUpdate(sql,
+                pass,
+                ma_nv);
+    }
+    
     public void delete(String MaNV) {
         String sql = "DELETE FROM tbl_NhanVien WHERE Ma_NV=?";
         JdbcHelper.executeUpdate(sql, MaNV);

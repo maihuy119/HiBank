@@ -26,9 +26,8 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         init();
     }
-    
+
     void init() {
-        setSize(1000, 600);
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
 
@@ -43,7 +42,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.openWelcome();
         this.openLogin();
     }
-    
+
     void openLogin() {
         new LoginJDialog(this, true).setVisible(true);
     }
@@ -62,19 +61,19 @@ public class MainJFrame extends javax.swing.JFrame {
             System.exit(0);
         }
     }
-    
-    void openAbout(){
+
+    void openAbout() {
         new GioiThieuJDialog(this, true).setVisible(true);
     }
-    
-    void openProfile(){
+
+    void openProfile() {
         if (ShareHelper.authenticated()) {
             new ProfileJFrame().setVisible(true);
         } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     void openNhanVien() {
         if (ShareHelper.authenticated()) {
             new NhanVienJFrame().setVisible(true);
@@ -82,31 +81,31 @@ public class MainJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
-    void openKhachHang(){
-        if(ShareHelper.authenticated()){
+
+    void openKhachHang() {
+        if (ShareHelper.authenticated()) {
             new KhachHangJFrame().setVisible(true);
-        } else{
+        } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
-    void openLoaiHinhVay(){
-        if(ShareHelper.authenticated()){
+
+    void openLoaiHinhVay() {
+        if (ShareHelper.authenticated()) {
             new LoaiHinhVayJFrame().setVisible(true);
-        } else{
+        } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
-    void openHoSo(){
-        if(ShareHelper.authenticated()){
+
+    void openHoSo() {
+        if (ShareHelper.authenticated()) {
             new HoSoVayJFrame().setVisible(true);
-        } else{
+        } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+
     void openThongKe(int index) {
         if (ShareHelper.authenticated()) {
             new ThongKeJFrame(index).setVisible(true);
@@ -114,11 +113,11 @@ public class MainJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
-    void openDoiMK(){
-        if(ShareHelper.authenticated()){
+
+    void openDoiMK() {
+        if (ShareHelper.authenticated()) {
             new ChangePassJFrame().setVisible(true);
-        } else{
+        } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
@@ -262,7 +261,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 577, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 524, Short.MAX_VALUE)
                 .addComponent(lblDongHo)
                 .addContainerGap())
             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)

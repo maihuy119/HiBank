@@ -35,7 +35,7 @@ public class KhachHangDAO {
     }
 
     public void update(KhachHang model) {
-        String sql = "UPDATE tbl_KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi=?, so_dien_thoai=?, nhan_vien_tao=?, ngay_tao=?, ghi_chu=?, anh=?, email=? WHERE ma_khach_hang=?";
+        String sql = "UPDATE tbl_KhachHang SET ho_ten=?, gioi_tinh=?, ngay_sinh=?, cmnd=?, que_quan=?, dia_chi=?, so_dien_thoai=?, nhan_vien_tao=?, ghi_chu=?, anh=?, email=? WHERE ma_khach_hang=?";
         JdbcHelper.executeUpdate(sql,                
                 model.getHoTen(),
                 model.isGioiTinh(),
@@ -45,7 +45,6 @@ public class KhachHangDAO {
                 model.getDiaChiThuongTru(),
                 model.getSoDienThoai(),
                 model.getNguoiTao(),
-                model.getNgayTao(),
                 model.getGhiChu(),
                 model.getAnh(),
                 model.getEmail(),

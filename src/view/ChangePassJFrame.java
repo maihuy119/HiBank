@@ -5,6 +5,11 @@
  */
 package view;
 
+import dao.NhanVienDAO;
+import helper.DialogHelper;
+import helper.ShareHelper;
+import java.util.Arrays;
+
 /**
  *
  * @author maihu
@@ -17,7 +22,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
     public ChangePassJFrame() {
         initComponents();
     }
-
+    NhanVienDAO dao = new NhanVienDAO();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +40,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
         txtMKMoi = new javax.swing.JPasswordField();
         txtXacNhanMK = new javax.swing.JPasswordField();
         btnXacNhan = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("THAY ĐỔI MẬT KHẨU");
@@ -50,6 +56,18 @@ public class ChangePassJFrame extends javax.swing.JFrame {
         jLabel4.setText("Xác nhận mật khẩu mới:");
 
         btnXacNhan.setText("Xác nhận");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
+
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,7 +82,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMKMoi)
+                            .addComponent(txtMKMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                             .addComponent(txtMKCu)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -75,9 +93,11 @@ public class ChangePassJFrame extends javax.swing.JFrame {
                         .addComponent(txtXacNhanMK)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(119, 119, 119)
                 .addComponent(btnXacNhan)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,13 +117,41 @@ public class ChangePassJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnXacNhan)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnXacNhan)
+                    .addComponent(btnThoat))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        this.changePass();
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    void changePass(){
+        char[] mkcu = txtMKCu.getPassword();
+        String strMkcu = String.valueOf(mkcu);
+        char[] mkmoi= txtMKMoi.getPassword();
+        String strMkmoi = String.valueOf(mkmoi);
+        char[] xnmk = txtXacNhanMK.getPassword();
+        if (strMkcu.equals(ShareHelper.USER.getPass().trim())) {
+            try {
+                dao.changePass(strMkmoi,ShareHelper.USER.getMaNV());
+                DialogHelper.alert(this, " Thay đổi mật khẩu thành công!");
+                this.dispose();
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Thay đổi mật khẩu thất bại!");
+            }
+        } else {
+            DialogHelper.alert(this, "Mật khẩu cũ không đúng!");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -140,6 +188,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

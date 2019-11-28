@@ -36,8 +36,7 @@ public class LoginJDialog extends javax.swing.JDialog {
         try {
             NhanVien nhanVien = dao.findByUN(username);        
             if (nhanVien != null) {
-                String matKhau2 = nhanVien.getPass();
-                System.out.println(matKhau.equals(matKhau2));
+                String matKhau2 = nhanVien.getPass().trim();
                 if (matKhau.equals(matKhau2)) {
                     ShareHelper.USER = nhanVien;
                     DialogHelper.alert(this, "Đăng nhập thành công!");
@@ -96,11 +95,16 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         lblMaNV.setText("Tên đăng nhập");
 
-        txtMaNV.setText("admin2");
+        txtMaNV.setText("admin");
 
         lblMatKhau.setText("Mật khẩu");
 
-        txtMatKhau.setText("123");
+        txtMatKhau.setText("1");
+        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatKhauActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(0, 102, 51));
@@ -173,6 +177,10 @@ public class LoginJDialog extends javax.swing.JDialog {
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
         this.exit();
     }//GEN-LAST:event_btnKetThucActionPerformed
+
+    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhauActionPerformed
 
     /**
      * @param args the command line arguments

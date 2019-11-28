@@ -5,6 +5,16 @@
  */
 package view;
 
+import dao.LoaiHinhVayDAO;
+import helper.DateHelper;
+import helper.DialogHelper;
+import helper.ShareHelper;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+import model.LoaiHinhVay;
+
 /**
  *
  * @author maihu
@@ -16,6 +26,194 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
      */
     public HoSoVayJFrame() {
         initComponents();
+    }
+
+    int index = 0;
+    LoaiHinhVayDAO dao = new LoaiHinhVayDAO();
+
+    void fillComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiHinhVay.getModel();
+        model.removeAllElements();
+        try {
+            List<LoaiHinhVay> list = dao.select();
+            for (LoaiHinhVay lh : list) {
+                model.addElement(lh.getTenLoai());
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn học viên!");
+        }
+    }
+    
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
+    }
+
+    void load() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
+        model.setRowCount(0);
+        try {
+            List<LoaiHinhVay> list = dao.select();
+            for (LoaiHinhVay lh : list) {
+                Object[] row = {
+//                    nv.getMaNV(),
+//                    nv.getHoTen(),
+//                    nv.isGioiTinh() ? "Nam" : "Nữ",
+//                    nv.getNgaySinh(),
+//                    nv.getCmnd(),
+//                    nv.getQueQuan(),
+//                    nv.getDiaChiThuongTru(),
+//                    nv.getSoDienThoai(),
+//                    nv.getChucVu(),
+//                    nv.getLuong(),
+//                    nv.getNgayCongTac(),
+//                    nv.getGhiChu()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    
+    private void clear() {
+        txtMaNV.setText("");
+        txtHoTen.setText("");
+        cboGioiTinh.setSelectedIndex(0);
+        txtNgaySinh.setText("");
+        txtCMND.setText("");
+        txtQueQuan.setText("");
+        txtDiaChi.setText("");
+        txtSoDT.setText("");
+        txtEmail.setText("");
+        txtChucVu.setText("");
+        txtLuong.setText("");
+    }
+
+    void setModel(NhanVien model) {
+        txtMaNV.setText(String.valueOf(model.getMaNV()));
+        txtHoTen.setText(model.getHoTen());
+        cboGioiTinh.setSelectedIndex(model.isGioiTinh() ? 0 : 1);
+        txtNgaySinh.setText(DateHelper.toString(model.getNgaySinh()));
+        txtCMND.setText(model.getCmnd());
+        txtQueQuan.setText(model.getQueQuan());
+        txtDiaChi.setText(model.getDiaChiThuongTru());
+        txtSoDT.setText(model.getSoDienThoai());
+        txtEmail.setText(model.getEmail());
+        txtChucVu.setText(model.getChucVu());
+        txtLuong.setText(String.valueOf(model.getLuong()));
+    }
+
+    
+    NhanVien getModel() {
+        NhanVien model = new NhanVien();
+        model.setHoTen(txtHoTen.getText());
+        model.setGioiTinh(cboGioiTinh.getSelectedIndex() == 0);
+        model.setNgaySinh(DateHelper.toDate(txtNgaySinh.getText()));
+        model.setCmnd(txtCMND.getText());
+        model.setQueQuan(txtQueQuan.getText());
+        model.setDiaChiThuongTru(txtDiaChi.getText());
+        model.setSoDienThoai(txtSoDT.getText());
+        model.setEmail(txtEmail.getText());
+        model.setChucVu(txtChucVu.getText());
+        model.setLuong(Float.valueOf(txtLuong.getText()));
+        model.setGhiChu(txaGhiChu.getText());
+        model.setUsername(getID());
+        model.setPass("1");
+        return model;
+    }
+    
+    String getID(){
+        String sName = txtHoTen.getText();
+        Date day = DateHelper.toDate(txtNgaySinh.getText());
+        int ngay = day.getDate();
+        int thang = day.getMonth()+1;
+        String strThang = "";
+        if (thang<10) {
+            strThang="0"+String.valueOf(thang);
+        } else {
+            strThang=String.valueOf(thang);
+        }
+        String strNgay = "";
+        if (ngay<10) {
+            strNgay="0"+String.valueOf(ngay);
+        } else {
+            strNgay=String.valueOf(ngay);
+        }
+        String ten = sName.substring(sName.lastIndexOf(" ")+1);
+        String id = ten + Character.toString(sName.charAt(0));
+        for (int i = 0; i < sName.length(); i++) {
+            char ch = sName.charAt(i);
+            if (Character.toString(ch).equalsIgnoreCase(" ")) {
+                id = id.concat(Character.toString(sName.charAt(i+1)));
+            }
+        }
+        id = id.substring(0, id.length()-1).toLowerCase()+strNgay+strThang;
+        return id;
+    }
+
+    void setStatus(boolean insertable) {
+        
+    }
+    
+    void insert() {
+        NhanVien model = getModel();
+        model.setNgayCongTac(new Date());
+        try {
+                dao.insert(model);
+                this.clear();
+                this.load();
+                DialogHelper.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                DialogHelper.alert(this, "Thêm mới thất bại!");
+                System.out.println(e.toString());
+            }
+    }
+    
+    void edit() {
+        try {
+            int manv = (int) tblDanhSach.getValueAt(this.index, 0);
+            NhanVien model = dao.findById(manv);
+            if (model != null) {
+                this.setModel(model);
+                this.setStatus(false);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    
+    void update() {
+        NhanVien model = getModel();
+        model.setMaNV(Integer.parseInt(txtMaNV.getText()));
+        NhanVien kt = dao.findById(Integer.parseInt(txtMaNV.getText()));
+        System.out.println(model.getMaNV());
+        System.out.println(model.getCmnd());
+            try {
+                dao.update(model);
+                this.load();
+                DialogHelper.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Cập nhật thất bại!");
+            }
+        
+    }
+
+    void delete() {
+       
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn xóa nhân viên này?")) {
+            String manv = txtMaNV.getText();
+            try {
+                dao.delete(manv);
+                this.load();
+                this.clear();
+                DialogHelper.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Xóa thất bại!");
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -51,13 +249,18 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         txtMaHoSo = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtTaiSanTheChap = new javax.swing.JTextArea();
-        cboLoaiHinhVay = new javax.swing.JComboBox<String>();
+        cboLoaiHinhVay = new javax.swing.JComboBox<>();
         pnlDanhSach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhSach = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QUẢN LÝ HỒ SƠ VAY");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -97,7 +300,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         txtTaiSanTheChap.setRows(5);
         jScrollPane3.setViewportView(txtTaiSanTheChap);
 
-        cboLoaiHinhVay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLoaiHinhVay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout pnlCapNhatLayout = new javax.swing.GroupLayout(pnlCapNhat);
         pnlCapNhat.setLayout(pnlCapNhatLayout);
@@ -141,7 +344,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                                     .addGap(41, 41, 41)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(214, 214, 214)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,7 +352,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                         .addComponent(btnCapNhat)
                         .addGap(18, 18, 18)
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addContainerGap(408, Short.MAX_VALUE))
         );
         pnlCapNhatLayout.setVerticalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,13 +391,13 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(98, 98, 98)
                         .addComponent(jLabel12)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnCapNhat)
                     .addComponent(btnXoa))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("CẬP NHẬT", pnlCapNhat);
@@ -268,6 +471,10 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        fillComboBox();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

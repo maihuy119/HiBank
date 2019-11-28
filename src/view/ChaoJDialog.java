@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author maihu
@@ -17,6 +21,23 @@ public class ChaoJDialog extends javax.swing.JDialog {
     public ChaoJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
+        setLocationRelativeTo(null);
+    }
+
+    void init() {
+        setLocationRelativeTo(null);
+        new Timer(3, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int value = progressBar.getValue();
+                if (value < 100) {
+                    progressBar.setValue(value + 1);
+                } else {
+                    ChaoJDialog.this.dispose();
+                }
+            }
+        }).start();
     }
 
     /**
@@ -30,7 +51,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
-        jProgressBar2 = new javax.swing.JProgressBar();
+        progressBar = new javax.swing.JProgressBar();
 
         jProgressBar1.setStringPainted(true);
 
@@ -39,10 +60,9 @@ public class ChaoJDialog extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_1.png"))); // NOI18N
         getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        jProgressBar2.setForeground(new java.awt.Color(0, 0, 0));
-        jProgressBar2.setString("50%");
-        jProgressBar2.setStringPainted(true);
-        getContentPane().add(jProgressBar2, java.awt.BorderLayout.PAGE_END);
+        progressBar.setForeground(new java.awt.Color(0, 0, 0));
+        progressBar.setStringPainted(true);
+        getContentPane().add(progressBar, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,6 +112,6 @@ public class ChaoJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 }
