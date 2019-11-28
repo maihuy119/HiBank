@@ -17,6 +17,12 @@ public class ThongKeJFrame extends javax.swing.JFrame {
     public ThongKeJFrame() {
         initComponents();
     }
+    
+    public ThongKeJFrame(int index) {
+        initComponents();
+        setLocationRelativeTo(null);
+        tabs.setSelectedIndex(index);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

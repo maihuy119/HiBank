@@ -117,7 +117,4 @@ public class NhanVienDAO {
         model.setPass(rs.getString("password"));
         return model;
     }
-
-    //test DAO
-   
 }
