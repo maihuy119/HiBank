@@ -5,17 +5,47 @@
  */
 package view;
 
+import dao.HoSoDAO;
+import dao.LoaiHinhVayDAO;
+import helper.DateHelper;
+import helper.DialogHelper;
+import java.util.Date;
+import model.HoSo;
+
 /**
  *
  * @author maihu
  */
 public class FormThanhToanJFrame extends javax.swing.JFrame {
-
+    LoaiHinhVayDAO lhdao = new LoaiHinhVayDAO();
+    HoSoDAO hsdao = new HoSoDAO();
     /**
      * Creates new form FormThanhToanJFrame
      */
     public FormThanhToanJFrame() {
         initComponents();
+    }
+    public FormThanhToanJFrame(HoSo hs) {
+        initComponents();
+        this.hs = hs;
+    }
+    
+    public HoSo hs;
+    
+    void load(){
+        System.out.println(hs.getHoTenNguoiVay());
+        lblHoTenNguoiVay.setText(hs.getHoTenNguoiVay());
+        lblMaHoSo.setText(hs.getMaHoSo());
+        lblLoaiHinhVay.setText(hs.getLoaiHinhVay());
+        lblNgayVay.setText(DateHelper.toString(hs.getNgayVay()));
+        lblKyHan.setText(hs.getThoiHan());
+        lblNgayHetHan.setText(DateHelper.toString(hs.getNgayHetHan()));
+        lblSoTien.setText(String.valueOf(hs.getSoTien()));
+        hsdao.findById(hs.getMaHoSo()).getLoaiHinhVay();
+        lhdao.findById(hsdao.findById(hs.getMaHoSo()).getLoaiHinhVay());
+        lblLaiSuat.setText(String.valueOf(lhdao.findById(hsdao.findById(hs.getMaHoSo()).getLoaiHinhVay()).getLaiSuat()));
+        lblSoTienLai.setText(String.valueOf(hs.getSoTienLai()));
+        lblTong.setText(String.valueOf(hs.getSoTien()+hs.getSoTienLai()));
     }
 
     /**
@@ -52,7 +82,12 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
         lblLaiSuat = new javax.swing.JLabel();
         lblSoTienLai = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -83,6 +118,11 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
         lblTong.setText("0 VND");
 
         btnXacNhan.setText("Xác nhận thanh toán");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
         lblHoTenNguoiVay.setText("Nguyễn Văn A");
 
@@ -151,7 +191,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXacNhan)
-                .addGap(145, 145, 145))
+                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +249,16 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        load();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        if (DialogHelper.confirm(this, "Xác nhận thanh toán hồ sơ này?")) {
+            thanhToan();
+        }
+    }//GEN-LAST:event_btnXacNhanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,4 +321,12 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoTienLai;
     private javax.swing.JLabel lblTong;
     // End of variables declaration//GEN-END:variables
+
+    private void thanhToan() {
+        hs.setDaThanhToan(true);
+        hs.setNgayTra(new Date());
+        hsdao.payment(hs);
+        DialogHelper.alert(this, "Thanh toán thành công!");
+        this.dispose();
+    }
 }

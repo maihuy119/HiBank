@@ -14,6 +14,13 @@ public class LoaiHinhVay {
     private String tenLoai;
     private Double laiSuat;
 
+    @Override
+    public String toString() {
+        return this.tenLoai;
+    }
+    
+    
+
     public LoaiHinhVay() {
     }
 

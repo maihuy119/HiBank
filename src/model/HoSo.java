@@ -13,36 +13,42 @@ import java.util.Date;
  */
 public class HoSo {
     private String maHoSo;
-    private String nguoiVay;
+    private String maNguoiVay;
+    private String hoTenNguoiVay;
     private String loaiHinhVay;
     private float soTien;
     private String mucDich;
     private Date ngayVay;
     private String nhanVienThucHien;
     private Date ngayHetHan;
+    private String taiSanTheChap;
     private String ghiChu;
     private float soTienLai;
     private Date ngayTra;
     private String thoiHan;
     private boolean daThanhToan;
+    private String cmnd;
 
     public HoSo() {
     }
 
-    public HoSo(String maHoSo, String nguoiVay, String loaiHinhVay, float soTien, String mucDich, Date ngayVay, String nhanVienThucHien, Date ngayHetHan, String ghiChu, float soTienLai, Date ngayTra, String thoiHan, boolean daThanhToan) {
+    public HoSo(String maHoSo, String maNguoiVay, String hoTenNguoiVay, String loaiHinhVay, float soTien, String mucDich, Date ngayVay, String nhanVienThucHien, Date ngayHetHan, String taiSanTheChap, String ghiChu, float soTienLai, Date ngayTra, String thoiHan, boolean daThanhToan, String cmnd) {
         this.maHoSo = maHoSo;
-        this.nguoiVay = nguoiVay;
+        this.maNguoiVay = maNguoiVay;
+        this.hoTenNguoiVay = hoTenNguoiVay;
         this.loaiHinhVay = loaiHinhVay;
         this.soTien = soTien;
         this.mucDich = mucDich;
         this.ngayVay = ngayVay;
         this.nhanVienThucHien = nhanVienThucHien;
         this.ngayHetHan = ngayHetHan;
+        this.taiSanTheChap = taiSanTheChap;
         this.ghiChu = ghiChu;
         this.soTienLai = soTienLai;
         this.ngayTra = ngayTra;
         this.thoiHan = thoiHan;
         this.daThanhToan = daThanhToan;
+        this.cmnd = cmnd;
     }
 
     public String getMaHoSo() {
@@ -53,12 +59,20 @@ public class HoSo {
         this.maHoSo = maHoSo;
     }
 
-    public String getNguoiVay() {
-        return nguoiVay;
+    public String getMaNguoiVay() {
+        return maNguoiVay;
     }
 
-    public void setNguoiVay(String nguoiVay) {
-        this.nguoiVay = nguoiVay;
+    public void setMaNguoiVay(String maNguoiVay) {
+        this.maNguoiVay = maNguoiVay;
+    }
+
+    public String getHoTenNguoiVay() {
+        return hoTenNguoiVay;
+    }
+
+    public void setHoTenNguoiVay(String hoTenNguoiVay) {
+        this.hoTenNguoiVay = hoTenNguoiVay;
     }
 
     public String getLoaiHinhVay() {
@@ -109,6 +123,14 @@ public class HoSo {
         this.ngayHetHan = ngayHetHan;
     }
 
+    public String getTaiSanTheChap() {
+        return taiSanTheChap;
+    }
+
+    public void setTaiSanTheChap(String taiSanTheChap) {
+        this.taiSanTheChap = taiSanTheChap;
+    }
+
     public String getGhiChu() {
         return ghiChu;
     }
@@ -147,6 +169,14 @@ public class HoSo {
 
     public void setDaThanhToan(boolean daThanhToan) {
         this.daThanhToan = daThanhToan;
+    }
+
+    public String getCmnd() {
+        return cmnd;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
     

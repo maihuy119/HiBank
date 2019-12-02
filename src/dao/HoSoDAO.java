@@ -18,13 +18,14 @@ import model.HoSo;
  */
 public class HoSoDAO {
     public void insert(HoSo model) {
-        String sql = "INSERT INTO tbl_HoSo (ma_ho_so, nguoi_vay, loai_hinh_vay, so_tien, muc_dich, ngay_vay, nhan_vien_thuc_hien, ngay_het_han, ghi_chu, so_tien_lai, ngay_tra, thoi_han, da_thanh_toan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_HoSo (ma_nguoi_vay, ho_ten_nguoi_vay, loai_hinh_vay, so_tien, muc_dich, tai_san_the_chap, ngay_vay, nhan_vien_thuc_hien, ngay_het_han, ghi_chu, so_tien_lai, ngay_tra, ky_han, da_thanh_toan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
-                model.getMaHoSo(),
-                model.getNguoiVay(),
+                model.getMaNguoiVay(),
+                model.getHoTenNguoiVay(),
                 model.getLoaiHinhVay(),
                 model.getSoTien(),
                 model.getMucDich(),
+                model.getTaiSanTheChap(),
                 model.getNgayVay(),
                 model.getNhanVienThucHien(),
                 model.getNgayHetHan(),
@@ -36,20 +37,27 @@ public class HoSoDAO {
     }
 
     public void update(HoSo model) {
-        String sql = "UPDATE tbl_HoSo SET nguoi_vay=?, loai_hinh_vay=?, so_tien=?, muc_dich=?, ngay_vay=?, nhan_vien_thuc_hien=?, ngay_het_han=?, ghi_chu=?, so_tien_lai=?, ngay_tra=?, thoi_han=?, da_thanh_toan=? WHERE ma_ho_so=?";
+        String sql = "UPDATE tbl_HoSo SET ho_ten_nguoi_vay=?, loai_hinh_vay=?, so_tien=?, muc_dich=?, tai_san_the_chap=?, ngay_het_han=?, ghi_chu=?, so_tien_lai=?, ngay_tra=?, ky_han=?, da_thanh_toan=? WHERE ma_ho_so=?";
         JdbcHelper.executeUpdate(sql,
-                model.getNguoiVay(),
+                model.getHoTenNguoiVay(),
                 model.getLoaiHinhVay(),
                 model.getSoTien(),
                 model.getMucDich(),
-                model.getNgayVay(),
-                model.getNhanVienThucHien(),
+                model.getTaiSanTheChap(),
                 model.getNgayHetHan(),
                 model.getGhiChu(),
                 model.getSoTienLai(),
                 model.getNgayTra(),
                 model.getThoiHan(),
                 model.isDaThanhToan(),
+                model.getMaHoSo());
+    }
+    
+    public void payment(HoSo model) {
+        String sql = "UPDATE tbl_HoSo SET da_thanh_toan=?, ngay_tra=? WHERE ma_ho_so=?";
+        JdbcHelper.executeUpdate(sql,
+                model.isDaThanhToan(),
+                model.getNgayTra(),
                 model.getMaHoSo());
     }
 
@@ -62,12 +70,18 @@ public class HoSoDAO {
         String sql = "SELECT * FROM tbl_HoSo";
         return select(sql);
     }
+    
+    public List<HoSo> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
 
     public HoSo findById(String mahs) {
         String sql = "SELECT * FROM tbl_HoSo WHERE ma_ho_so=?";
         List<HoSo> list = select(sql, mahs);
         return list.size() > 0 ? list.get(0) : null;
     }
+    
 
     private List<HoSo> select(String sql, Object... args) {
         List<HoSo> list = new ArrayList<>();
@@ -87,11 +101,12 @@ public class HoSoDAO {
         }
         return list;
     }
-
+    
     private HoSo readFromResultSet(ResultSet rs) throws SQLException {
         HoSo model = new HoSo();
-        model.setMaHoSo(rs.getString("ma_khach_hang"));
-        model.setNguoiVay(rs.getString("nguoi_vay"));
+        model.setMaHoSo(rs.getString("ma_ho_so"));
+        model.setMaNguoiVay(rs.getString("ma_nguoi_vay"));
+        model.setHoTenNguoiVay(rs.getString("ho_ten_nguoi_vay"));
         model.setLoaiHinhVay(rs.getString("loai_hinh_vay"));
         model.setSoTien(rs.getFloat("so_tien"));
         model.setMucDich(rs.getString("muc_dich"));
@@ -101,7 +116,7 @@ public class HoSoDAO {
         model.setGhiChu(rs.getString("ghi_chu"));       
         model.setSoTienLai(rs.getFloat("so_tien_lai"));
         model.setNgayTra(rs.getDate("ngay_tra"));
-        model.setThoiHan(rs.getString("thoi_han"));
+        model.setThoiHan(rs.getString("ky_han"));
         model.setDaThanhToan(rs.getBoolean("da_thanh_toan"));
         return model;
     }

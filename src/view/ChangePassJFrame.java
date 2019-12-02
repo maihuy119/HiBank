@@ -42,7 +42,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
         btnXacNhan = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("THAY ĐỔI MẬT KHẨU");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -137,6 +137,7 @@ public class ChangePassJFrame extends javax.swing.JFrame {
     void changePass(){
         char[] mkcu = txtMKCu.getPassword();
         String strMkcu = String.valueOf(mkcu);
+        System.out.println(strMkcu);
         char[] mkmoi= txtMKMoi.getPassword();
         String strMkmoi = String.valueOf(mkmoi);
         char[] xnmk = txtXacNhanMK.getPassword();

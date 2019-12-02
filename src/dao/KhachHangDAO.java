@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.HoSo;
 import model.KhachHang;
 
 /**
@@ -64,6 +65,18 @@ public class KhachHangDAO {
     public KhachHang findById(int makh) {
         String sql = "SELECT * FROM tbl_KhachHang WHERE ma_khach_hang=?";
         List<KhachHang> list = select(sql, makh);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+    
+    public KhachHang findByName(String name) {
+        String sql = "SELECT * FROM tbl_Khachhang WHERE ho_ten=?";
+        List<KhachHang> list = select(sql, name);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+    
+    public KhachHang findByCMND(String cmnd) {
+        String sql = "SELECT * FROM tbl_Khachhang WHERE cmnd=?";
+        List<KhachHang> list = select(sql, cmnd);
         return list.size() > 0 ? list.get(0) : null;
     }
 

@@ -48,6 +48,13 @@ public class LoaiHinhVayDAO {
         List<LoaiHinhVay> list = select(sql, maloai);
         return list.size() > 0 ? list.get(0) : null;
     }
+    
+    public LoaiHinhVay findByName(String tenloai) {
+        String sql = "SELECT * FROM tbl_LoaiHinhVay WHERE ten_loai_hinh=?";
+        List<LoaiHinhVay> list = select(sql, tenloai);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+
 
     private List<LoaiHinhVay> select(String sql, Object... args) {
         List<LoaiHinhVay> list = new ArrayList<>();

@@ -5,6 +5,9 @@
  */
 package view;
 
+import helper.DateHelper;
+import model.NhanVien;
+
 /**
  *
  * @author maihu
@@ -17,7 +20,13 @@ public class ProfileJFrame extends javax.swing.JFrame {
     public ProfileJFrame() {
         initComponents();
     }
+    
+    public ProfileJFrame(NhanVien nv) {
+        initComponents();
+        this.nhanVien = nv;
+    }
 
+    public NhanVien nhanVien;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,8 +60,13 @@ public class ProfileJFrame extends javax.swing.JFrame {
         lblAnh = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("THÔNG TIN CÁ NHÂN");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
@@ -77,6 +91,11 @@ public class ProfileJFrame extends javax.swing.JFrame {
         jLabel10.setText("Ngày công tác:");
 
         btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMKActionPerformed(evt);
+            }
+        });
 
         txtMaNV.setEditable(false);
 
@@ -218,6 +237,14 @@ public class ProfileJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
+        new ChangePassJFrame().setVisible(true);
+    }//GEN-LAST:event_btnDoiMKActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        load();
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -278,4 +305,16 @@ public class ProfileJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtQueQuan;
     private javax.swing.JTextField txtSoDT;
     // End of variables declaration//GEN-END:variables
+
+    private void load() {
+        txtMaNV.setText(String.valueOf(nhanVien.getMaNV()));
+        txtHoTen.setText(nhanVien.getHoTen());
+        rdoNam.setSelected(nhanVien.isGioiTinh());
+        txtNgaySinh.setText(DateHelper.toString(nhanVien.getNgaySinh()));
+        txtCMND.setText(nhanVien.getCmnd());
+        txtQueQuan.setText(nhanVien.getQueQuan());
+        txtDiaChi.setText(nhanVien.getDiaChiThuongTru());
+        txtSoDT.setText(nhanVien.getSoDienThoai());
+        txtNgayCongTac.setText(DateHelper.toString(nhanVien.getNgayCongTac()));
+    }
 }

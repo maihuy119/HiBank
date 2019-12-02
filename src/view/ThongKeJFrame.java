@@ -47,7 +47,7 @@ public class ThongKeJFrame extends javax.swing.JFrame {
         cboNam = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TỔNG HỢP THỐNG KÊ");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

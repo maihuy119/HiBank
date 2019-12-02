@@ -65,10 +65,14 @@ public class MainJFrame extends javax.swing.JFrame {
     void openAbout() {
         new GioiThieuJDialog(this, true).setVisible(true);
     }
+    
+    void openThanhToan(){
+        new ThanhToanJFrame().setVisible(true);
+    }
 
     void openProfile() {
         if (ShareHelper.authenticated()) {
-            new ProfileJFrame().setVisible(true);
+            new ProfileJFrame(ShareHelper.USER).setVisible(true);
         } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
@@ -155,6 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mniKhachHang = new javax.swing.JMenuItem();
         mniLoaiHinh = new javax.swing.JMenuItem();
         mniHoSo = new javax.swing.JMenuItem();
+        mniThanhToan = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         mniTKKhachHang = new javax.swing.JMenuItem();
         mniTKHoSo = new javax.swing.JMenuItem();
@@ -366,6 +371,15 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jMenu4.add(mniHoSo);
 
+        mniThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Money.png"))); // NOI18N
+        mniThanhToan.setText("Thanh toán");
+        mniThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThanhToanActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mniThanhToan);
+
         jMenuBar2.add(jMenu4);
 
         jMenu5.setText("Thống kê");
@@ -504,6 +518,10 @@ public class MainJFrame extends javax.swing.JFrame {
         openAbout();
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
+    private void mniThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThanhToanActionPerformed
+        openThanhToan();
+    }//GEN-LAST:event_mniThanhToanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -572,6 +590,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniTKDoanhThu;
     private javax.swing.JMenuItem mniTKHoSo;
     private javax.swing.JMenuItem mniTKKhachHang;
+    private javax.swing.JMenuItem mniThanhToan;
     private javax.swing.JMenuItem mniThongTin;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,12 @@
  */
 package view;
 
+import dao.HoSoDAO;
+import helper.DialogHelper;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.HoSo;
+
 /**
  *
  * @author maihu
@@ -16,6 +22,33 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
      */
     public ThanhToanJFrame() {
         initComponents();
+    }
+    
+    HoSoDAO hsdao = new HoSoDAO();
+    
+    void load() {
+        DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
+        model.setRowCount(0);
+        String keyword = txtTimKiem.getText();
+        try {
+            List<HoSo> list = hsdao.selectByKeyword(keyword);
+            for (HoSo hs : list) {
+                Object[] row = {
+                    hs.getMaHoSo(),
+                    hs.getHoTenNguoiVay(),
+                    hs.getLoaiHinhVay(),
+                    hs.getSoTien(),
+                    hs.getNgayVay(),
+                    hs.getNhanVienThucHien(),
+                    hs.getNgayHetHan(),
+                    hs.getGhiChu()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -35,6 +68,14 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
         tblDanhSach = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -80,7 +121,20 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             new String [] {
                 "Mã hồ sơ", "Người vay ", "Loại hình vay", "Số tiền vay", "Ngày vay", "Nhân viên thực hiện", "Ngày hết hạn", "Ghi chú"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDanhSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhSachMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDanhSach);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,9 +167,24 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
-        
-        
+        load();
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        load();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
+        if (evt.getClickCount() == 2) {
+            String id = tblDanhSach.getValueAt(tblDanhSach.getSelectedRow(), 0).toString();
+            HoSo hs = hsdao.findById(id);
+            new FormThanhToanJFrame(hs).setVisible(true);
+        }
+    }//GEN-LAST:event_tblDanhSachMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        load();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
