@@ -47,9 +47,11 @@ public class ThongKeJFrame extends javax.swing.JFrame {
         List<HoSo> list = hsdao.select();
         
         for (HoSo hs : list) {
-            int nam = hs.getNgayTra().getYear()+1900;
+            if (hs.getNgayTra()!=null) {
+                int nam = hs.getNgayTra().getYear()+1900;
             if (model.getIndexOf(nam) < 0) {
                 model.addElement(nam);
+            }
             }
         }
         cboNam.setSelectedIndex(0);
@@ -220,6 +222,15 @@ public class ThongKeJFrame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblDoanhThu);
 
         cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboNamPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         jLabel3.setText("NĂM:");
 
@@ -282,6 +293,10 @@ public class ThongKeJFrame extends javax.swing.JFrame {
         this.fillTableHoSo();
         this.fillTableDoanhThu();
     }//GEN-LAST:event_formWindowOpened
+
+    private void cboNamPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboNamPopupMenuWillBecomeInvisible
+        this.fillTableDoanhThu();
+    }//GEN-LAST:event_cboNamPopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments

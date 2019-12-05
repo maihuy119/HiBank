@@ -127,7 +127,9 @@ public class ChangePassJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
-        this.changePass();
+        if (isvalid()) {
+            this.changePass();
+        }
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -153,6 +155,34 @@ public class ChangePassJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Mật khẩu cũ không đúng!");
         }
     }
+    
+    public boolean isvalid() {
+        char[] mkcu = txtMKCu.getPassword();
+        char[] mkmoi = txtMKMoi.getPassword();
+        char[] mkxn = txtXacNhanMK.getPassword();
+        String strMkmoi = String.valueOf(mkmoi);
+        String strMkxn = String.valueOf(mkxn);
+        if (mkcu.length == 0) {
+            DialogHelper.alert(this, "Vui lòng nhập mật khẩu cũ!");
+            return false;
+        }
+        if (mkmoi.length == 0) {
+            DialogHelper.alert(this, "Vui lòng nhập mật khẩu mới!");
+            txtMKMoi.requestFocus();
+            return false;
+        }
+        if (mkxn.length == 0)  {
+            DialogHelper.alert(this, "Vui lòng nhập lại mật khẩu mới!");
+            txtXacNhanMK.requestFocus();
+            return false;
+        } else if (!strMkxn.equals(strMkmoi)) {
+            DialogHelper.alert(this, "Mật khẩu xác nhận không khớp với mật khẩu mới!");
+            txtXacNhanMK.requestFocus();
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
