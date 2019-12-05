@@ -6,6 +6,7 @@
 package view;
 
 import helper.DateHelper;
+import helper.ShareHelper;
 import model.NhanVien;
 
 /**
@@ -19,6 +20,11 @@ public class ProfileJFrame extends javax.swing.JFrame {
      */
     public ProfileJFrame() {
         initComponents();
+    }
+    
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
     }
     
     public ProfileJFrame(NhanVien nv) {

@@ -9,6 +9,7 @@ import dao.HoSoDAO;
 import dao.LoaiHinhVayDAO;
 import helper.DateHelper;
 import helper.DialogHelper;
+import helper.ShareHelper;
 import java.util.Date;
 import model.HoSo;
 
@@ -24,6 +25,10 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
      */
     public FormThanhToanJFrame() {
         initComponents();
+    }
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
     }
     public FormThanhToanJFrame(HoSo hs) {
         initComponents();

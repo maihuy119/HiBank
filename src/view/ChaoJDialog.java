@@ -5,6 +5,7 @@
  */
 package view;
 
+import helper.ShareHelper;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -26,6 +27,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
     }
 
     void init() {
+        setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
         new Timer(3, new ActionListener() {
             @Override

@@ -7,6 +7,7 @@ package view;
 
 import dao.HoSoDAO;
 import helper.DialogHelper;
+import helper.ShareHelper;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.HoSo;
@@ -23,7 +24,10 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
     public ThanhToanJFrame() {
         initComponents();
     }
-    
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
+    }
     HoSoDAO hsdao = new HoSoDAO();
     
     void load() {

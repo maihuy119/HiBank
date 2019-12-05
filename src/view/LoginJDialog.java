@@ -26,8 +26,10 @@ public class LoginJDialog extends javax.swing.JDialog {
     }
 
     void init() {
+        setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
     }
+    
     NhanVienDAO dao = new NhanVienDAO();
 
     void Login() {
