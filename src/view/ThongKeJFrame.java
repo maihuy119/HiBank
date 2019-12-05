@@ -5,23 +5,82 @@
  */
 package view;
 
+import dao.HoSoDAO;
+import dao.ThongKeDAO;
+import helper.ShareHelper;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+import model.HoSo;
+
 /**
  *
  * @author maihu
  */
 public class ThongKeJFrame extends javax.swing.JFrame {
-
+    HoSoDAO hsdao = new HoSoDAO();
+    ThongKeDAO tkdao = new ThongKeDAO();
     /**
      * Creates new form ThongKeJFrame
      */
     public ThongKeJFrame() {
         initComponents();
+        init();
     }
     
     public ThongKeJFrame(int index) {
         initComponents();
+        init();
         setLocationRelativeTo(null);
         tabs.setSelectedIndex(index);
+    }
+    
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
+    }
+    
+    void fillComboBoxNam() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam.getModel();
+        model.removeAllElements();
+        List<HoSo> list = hsdao.select();
+        
+        for (HoSo hs : list) {
+            int nam = hs.getNgayTra().getYear()+1900;
+            if (model.getIndexOf(nam) < 0) {
+                model.addElement(nam);
+            }
+        }
+        cboNam.setSelectedIndex(0);
+    }
+    
+    void fillTableKhachHang() {
+        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tkdao.getKhachHang();
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+    
+    void fillTableHoSo() {
+        DefaultTableModel model = (DefaultTableModel) tblHoSo.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tkdao.getHoSo();
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+    
+    void fillTableDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        int nam = (int) cboNam.getSelectedItem();
+        List<Object[]> list = tkdao.getDoanhThu(nam);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
     }
 
     /**
@@ -49,6 +108,11 @@ public class ThongKeJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TỔNG HỢP THỐNG KÊ");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -96,17 +160,17 @@ public class ThongKeJFrame extends javax.swing.JFrame {
 
         tblHoSo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Năm", "Tổng số hồ sơ vay", "Tổng số hồ sơ chưa trả"
+                "Năm", "Tổng số hồ sơ vay"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -211,6 +275,13 @@ public class ThongKeJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.fillComboBoxNam();
+        this.fillTableKhachHang();
+        this.fillTableHoSo();
+        this.fillTableDoanhThu();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

@@ -47,7 +47,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                 model.addElement(lh);
             }
         } catch (Exception e) {
-            DialogHelper.alert(this, "Lỗi truy vấn học viên!");
+            DialogHelper.alert(this, "Lỗi truy vấn loại hình!");
         }
     }
 
