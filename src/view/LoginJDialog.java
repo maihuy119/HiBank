@@ -64,6 +64,12 @@ public class LoginJDialog extends javax.swing.JDialog {
     public boolean isvalid() {
         if (txtMaNV.getText().length() == 0) {
             DialogHelper.alert(this, "Vui lòng nhập tên đăng nhập!");
+            txtMaNV.requestFocus();
+            return false;
+        }
+        if (txtMatKhau.getPassword().length == 0) {
+            DialogHelper.alert(this, "Vui lòng nhập tên đăng nhập!");
+            txtMatKhau.requestFocus();
             return false;
         }
         return true;

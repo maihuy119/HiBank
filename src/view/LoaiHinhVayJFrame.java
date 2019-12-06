@@ -27,6 +27,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
      */
     public LoaiHinhVayJFrame() {
         initComponents();
+        init();
     }
 
     LoaiHinhVayDAO dao = new LoaiHinhVayDAO();
@@ -135,6 +136,27 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+    }
+    
+    public boolean isvalid() {
+        StringBuffer sb = new StringBuffer();
+        if (txtMaLoai.getText().length()==0) {
+            sb.append("Vui lòng nhập mã loại hình vay!");
+        }
+        if (txtTenLoai.getText().length()==0) {
+            sb.append("Vui lòng nhập tên loại hình vay!");
+        }
+        if (txtLaiSuat.getText().length()==0) {
+            sb.append("Vui lòng nhập lãi suất!");
+        } else if (Float.valueOf(txtLaiSuat.getText())<=0) {
+            sb.append("Lãi suất phải là số dương!");
+        }
+        if (sb.length() != 0) {
+            sb.append("Mời nhập lại!");
+            DialogHelper.alert(this, sb.toString());
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -348,7 +370,9 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        this.insert();
+        if (isvalid()) {
+            this.insert();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -356,7 +380,9 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        this.update();
+        if (isvalid()) {
+            this.update();
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     /**

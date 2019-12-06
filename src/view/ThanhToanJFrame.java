@@ -23,6 +23,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
      */
     public ThanhToanJFrame() {
         initComponents();
+        init();
     }
     void init() {
         setIconImage(ShareHelper.APP_ICON);

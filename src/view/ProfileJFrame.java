@@ -20,6 +20,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
      */
     public ProfileJFrame() {
         initComponents();
+        init();
     }
     
     void init() {

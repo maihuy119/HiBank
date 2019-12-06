@@ -20,6 +20,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        init();
     }
     
     void init() {

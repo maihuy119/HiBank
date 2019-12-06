@@ -25,6 +25,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
      */
     public FormThanhToanJFrame() {
         initComponents();
+        init();
     }
     void init() {
         setIconImage(ShareHelper.APP_ICON);

@@ -27,6 +27,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
      */
     public NhanVienJFrame() {
         initComponents();
+        init();
     }
     
     void init() {
@@ -199,6 +200,58 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+    }
+    
+    public boolean isvalid() {
+        StringBuffer sb = new StringBuffer();
+        if (txtHoTen.getText().length() == 0) {
+            sb.append("Vui lòng nhập họ tên nhân viên!\n");
+        } else if (!txtHoTen.getText().matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")) {
+            sb.append("Vui lòng nhập đúng định dạng họ tên!\n");
+        }
+        String strNgaySinh = txtNgaySinh.getText();
+        if (txtNgaySinh.getText().equals("")) {
+            sb.append("Vui lòng nhập ngày sinh!\n");
+        } else if (!strNgaySinh.matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
+            sb.append("Vui lòng nhập đúng đinh dạng MM/dd/yyyy!\n");
+        }
+        if (txtCMND.getText().length() == 0) {
+            sb.append("Vui lòng nhập CMND!\n");
+        } else if (!txtCMND.getText().matches("\\d{9}")) {
+            sb.append("Vui lòng nhập đúng định dạng CMND!\n");
+        }
+        if (txtQueQuan.getText().length() == 0) {
+            sb.append("Vui lòng nhập quê quán!\n");
+        }
+        if (txtDiaChi.getText().length() == 0) {
+            sb.append("Vui lòng nhập địa chỉ thường trú!\n");
+        }
+        if (txtSoDT.getText().equals("")) {
+            sb.append("Vui lòng nhập số điện thoại!\n");
+        } else if (txtSoDT.getText().matches("0\\d{9}")) {
+            sb.append("Vui lòng nhập đúng định dạng số điện thoại!\n");
+        }
+        if (txtEmail.getText().equals("")) {
+            sb.append("Vui lòng nhập email!\n");
+        } else if (!txtEmail.getText().matches("^(.+)@(.+)$")) {
+            sb.append("Vui lòng nhập đúng định dạng email!\n");
+        }
+        if (txtChucVu.getText().length() == 0) {
+            sb.append("Vui lòng nhập chức vụ!\n");
+        } else if (!txtChucVu.getText().matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")) {
+            sb.append("Vui lòng nhập đúng định dạng!\n");
+        }
+        if (txtLuong.getText().length() == 0) {
+            sb.append("Vui lòng nhập lương!\n");
+        } else if (Float.valueOf(txtLuong.getText())<=0) {
+            sb.append("Số tiền lương phải số dương!");
+        }
+        if (sb.length() != 0) {
+            sb.append("Mời nhập lại!");
+            DialogHelper.alert(this, sb.toString());
+            return false;
+        }
+        return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -536,7 +589,9 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        insert();
+        if (isvalid()) {
+            insert();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -558,7 +613,9 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        this.update();
+        if (isvalid()) {
+            this.update();
+        }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

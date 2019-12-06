@@ -29,6 +29,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
      */
     public HoSoVayJFrame() {
         initComponents();
+        init();
     }
 
     int index = 0;
@@ -36,8 +37,6 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     HoSoDAO hsdao = new HoSoDAO();
     KhachHangDAO khdao = new KhachHangDAO();
 
-    
-    
     void fillComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiHinhVay.getModel();
         model.removeAllElements();
@@ -103,7 +102,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         txtMaHoSo.setText(model.getMaHoSo());
         cboLoaiHinhVay.setSelectedItem(model.getLoaiHinhVay());
         txtSoTien.setText(String.valueOf(model.getSoTien()));
-        cboThoiHan.setSelectedItem(model.getThoiHan()); 
+        cboThoiHan.setSelectedItem(model.getThoiHan());
         txtCmnd.setText(model.getCmnd());
         txtMucDich.setText(model.getMucDich());
         txtNgayHetHan.setText(DateHelper.toString(model.getNgayHetHan()));
@@ -132,13 +131,13 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     }
 
     void insert() {
-        HoSo model = getModel();      
+        HoSo model = getModel();
         String maNgVay = String.valueOf((khdao.findByCMND(txtCmnd.getText()).getMaKhachHang()));
         model.setMaNguoiVay(maNgVay);
         model.setNhanVienThucHien(String.valueOf(ShareHelper.USER.getMaNV()));
         model.setDaThanhToan(false);
         model.setNgayVay(new Date());
-        model.setSoTienLai(model.getSoTien()*Float.valueOf(txtLaiSuat.getText())/100);
+        model.setSoTienLai(model.getSoTien() * Float.valueOf(txtLaiSuat.getText()) / 100);
         try {
             hsdao.insert(model);
             this.clear();
@@ -149,7 +148,6 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Thêm mới thất bại!");
         }
     }
- 
 
     void edit() {
         try {
@@ -167,7 +165,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     void update() {
         HoSo model = getModel();
         model.setMaHoSo(txtMaHoSo.getText());
-        model.setSoTienLai(model.getSoTien()*Float.valueOf(txtLaiSuat.getText())/100);
+        model.setSoTienLai(model.getSoTien() * Float.valueOf(txtLaiSuat.getText()) / 100);
         try {
             hsdao.update(model);
             this.load();
@@ -193,25 +191,52 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 //            }
 //        }
 //    }
-    
     void selectComboBoxLH() {
-       LoaiHinhVay lh = (LoaiHinhVay) cboLoaiHinhVay.getSelectedItem();
-       txtLaiSuat.setText(lh.getLaiSuat().toString());
+        LoaiHinhVay lh = (LoaiHinhVay) cboLoaiHinhVay.getSelectedItem();
+        txtLaiSuat.setText(lh.getLaiSuat().toString());
     }
-    
+
     void selectComboBoxTH() {
-       int ind = cboThoiHan.getSelectedIndex();
-       Date today = new Date();
-        if (ind==0) {
-            today.setMonth(today.getMonth()+3);
-            txtNgayHetHan.setText(DateHelper.toString(today));    
-        } else if (ind==1){
-            today.setMonth(today.getMonth()+6);
-            txtNgayHetHan.setText(DateHelper.toString(today));   
+        int ind = cboThoiHan.getSelectedIndex();
+        Date today = new Date();
+        if (ind == 0) {
+            today.setMonth(today.getMonth() + 3);
+            txtNgayHetHan.setText(DateHelper.toString(today));
+        } else if (ind == 1) {
+            today.setMonth(today.getMonth() + 6);
+            txtNgayHetHan.setText(DateHelper.toString(today));
         } else {
-            today.setMonth(today.getMonth()+12);
-            txtNgayHetHan.setText(DateHelper.toString(today));   
+            today.setMonth(today.getMonth() + 12);
+            txtNgayHetHan.setText(DateHelper.toString(today));
         }
+    }
+
+    public boolean isvalid() {
+        StringBuffer sb = new StringBuffer();
+        if (txtHoTen.getText().length() == 0) {
+            sb.append("Vui lòng nhập họ tên người vay!\n");
+        } else if (!txtHoTen.getText().matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")) {
+            sb.append("Vui lòng nhập đúng định dạng họ tên!\n");
+        }
+        if (txtCmnd.getText().length() == 0) {
+            sb.append("Vui lòng nhập CMND!\n");
+        } else if (!txtCmnd.getText().matches("\\d{9}")) {
+            sb.append("Vui lòng nhập đúng định dạng CMND!");
+        }
+        if (txtSoTien.getText().length() == 0) {
+            sb.append("Vui lòng nhập số tiền vay!\n");
+        } else if (Float.valueOf(txtSoTien.getText())<=0) {
+            sb.append("Số tiền vay phải dương!");
+        }
+        if (txtTaiSanTheChap.getText().length() == 0) {
+            sb.append("Vui lòng nhập tài sản thế chấp!\n");
+        }
+        if (sb.length() != 0) {
+            sb.append("Mời nhập lại!");
+            DialogHelper.alert(this, sb.toString());
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -545,16 +570,20 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if (khdao.findByCMND(txtCmnd.getText())==null) {
-            DialogHelper.alert(this, "Khách hàng này chưa có thông tin. Hãy nhập thông tin!!");
-            new KhachHangJFrame().setVisible(true);
-        } else {
-            this.insert();
+        if (isvalid()) {
+            if (khdao.findByCMND(txtCmnd.getText()) == null) {
+                DialogHelper.alert(this, "Khách hàng này chưa có thông tin. Hãy nhập thông tin!!");
+                new KhachHangJFrame().setVisible(true);
+            } else {
+                this.insert();
+            }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        this.update();
+        if (isvalid()) {
+            this.update();
+        }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed

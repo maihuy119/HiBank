@@ -21,6 +21,11 @@ public class ChangePassJFrame extends javax.swing.JFrame {
      */
     public ChangePassJFrame() {
         initComponents();
+        init();
+    }
+    void init() {
+        setIconImage(ShareHelper.APP_ICON);
+        setLocationRelativeTo(null);
     }
     NhanVienDAO dao = new NhanVienDAO();
     /**
