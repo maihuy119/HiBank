@@ -22,7 +22,7 @@ import model.NhanVien;
 public class ShareHelper {
     public static final Image APP_ICON;
     static{
-        String file="/images/fpt.png";
+        String file="/images/hb.png";
         APP_ICON = new ImageIcon(ShareHelper.class.getResource(file)).getImage();
     }
     

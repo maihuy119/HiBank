@@ -96,6 +96,7 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("HỆ THỐNG QUẢN LÝ NGÂN HÀNG");
+        setBackground(new java.awt.Color(0, 0, 255));
 
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security.png"))); // NOI18N
         lblImage.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -115,7 +116,7 @@ public class LoginJDialog extends javax.swing.JDialog {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 102, 51));
+        lblTitle.setForeground(new java.awt.Color(204, 0, 0));
         lblTitle.setText("ĐĂNG NHẬP");
 
         btnDangNhap.setText("Đăng nhập");
@@ -142,7 +143,6 @@ public class LoginJDialog extends javax.swing.JDialog {
                     .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lblMaNV)
                         .addComponent(lblMatKhau)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtMaNV)
                         .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
                     .addGroup(pnlFormLayout.createSequentialGroup()
@@ -150,6 +150,10 @@ public class LoginJDialog extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(btnKetThuc)))
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlFormLayout.setVerticalGroup(
             pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
