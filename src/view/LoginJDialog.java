@@ -41,7 +41,6 @@ public class LoginJDialog extends javax.swing.JDialog {
                 String matKhau2 = nhanVien.getPass().trim();
                 if (matKhau.equals(matKhau2)) {
                     ShareHelper.USER = nhanVien;
-                    DialogHelper.alert(this, "Đăng nhập thành công!");
                     this.dispose();
                 } else {
                     DialogHelper.alert(this, "Sai mật khẩu!");

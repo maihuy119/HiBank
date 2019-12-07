@@ -17,7 +17,7 @@ import model.HoSo;
  *
  * @author maihu
  */
-public class FormThanhToanJFrame extends javax.swing.JFrame {
+public final class FormThanhToanJFrame extends javax.swing.JFrame {
     LoaiHinhVayDAO lhdao = new LoaiHinhVayDAO();
     HoSoDAO hsdao = new HoSoDAO();
     /**
@@ -34,12 +34,12 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
     public FormThanhToanJFrame(HoSo hs) {
         initComponents();
         this.hs = hs;
+        init();
     }
     
     public HoSo hs;
     
     void load(){
-        System.out.println(hs.getHoTenNguoiVay());
         lblHoTenNguoiVay.setText(hs.getHoTenNguoiVay());
         lblMaHoSo.setText(hs.getMaHoSo());
         lblLoaiHinhVay.setText(hs.getLoaiHinhVay());
@@ -197,7 +197,7 @@ public class FormThanhToanJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXacNhan)
-                .addGap(149, 149, 149))
+                .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

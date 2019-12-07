@@ -25,6 +25,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
      */
     public KhachHangJFrame() {
         initComponents();
+        init();
     }
 
     int index = 0;
@@ -66,7 +67,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtMaKH.setText("");
         txtHoTen.setText("");
         cboGioiTinh.setSelectedIndex(0);
-        txtNgaySinh.setText("");
+        dcBirthday.setDate(new Date());
         txtCMND.setText("");
         txtQueQuan.setText("");
         txtDiaChi.setText("");
@@ -79,11 +80,11 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtMaKH.setText(String.valueOf(model.getMaKhachHang()));
         txtHoTen.setText(model.getHoTen());
         cboGioiTinh.setSelectedIndex(model.isGioiTinh() ? 0 : 1);
-        txtNgaySinh.setText(DateHelper.toString(model.getNgaySinh()));
-        txtCMND.setText(model.getCmnd());
+        dcBirthday.setDate(model.getNgaySinh());
+        txtCMND.setText(model.getCmnd().trim());
         txtQueQuan.setText(model.getQueQuan());
         txtDiaChi.setText(model.getDiaChiThuongTru());
-        txtSDT.setText(model.getSoDienThoai());
+        txtSDT.setText(model.getSoDienThoai().trim());
         txtEmail.setText(model.getEmail());
         txtGhiChu.setText(model.getGhiChu());
     }
@@ -92,7 +93,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         KhachHang model = new KhachHang();
         model.setHoTen(txtHoTen.getText());
         model.setGioiTinh(cboGioiTinh.getSelectedIndex() == 0);
-        model.setNgaySinh(DateHelper.toDate(txtNgaySinh.getText()));
+        model.setNgaySinh(dcBirthday.getDate());
         model.setCmnd(txtCMND.getText());
         model.setQueQuan(txtQueQuan.getText());
         model.setDiaChiThuongTru(txtDiaChi.getText());
@@ -138,7 +139,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     void update() {
         KhachHang model = getModel();
         model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
-        System.out.println(model.getMaKhachHang() + "    " +model.getNgaySinh());
         try {
             dao.update(model);
             this.load();
@@ -173,16 +173,10 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         } else if (!txtHoTen.getText().matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")) {
             sb.append("Vui lòng nhập đúng định dạng họ tên!\n");
         }
-        String strNgaySinh = txtNgaySinh.getText();
-        if (txtNgaySinh.getText().equals("")) {
-            sb.append("Vui lòng nhập Ngày sinh!\n");
-        } else if (!strNgaySinh.matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
-            sb.append("Vui lòng nhập đúng đinh dạng MM/dd/yyyy!\n");
-        }
         if (txtCMND.getText().length() == 0) {
             sb.append("Vui lòng nhập CMND!\n");
         } else if (!txtCMND.getText().matches("\\d{9}")) {
-            sb.append("Vui lòng nhập đúng định dạng CMND!");
+            sb.append("Vui lòng nhập đúng định dạng CMND!\n");
         }
         if (txtQueQuan.getText().length() == 0) {
             sb.append("Vui lòng nhập quê quán!\n");
@@ -192,7 +186,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         }
         if (txtSDT.getText().equals("")) {
             sb.append("Vui lòng nhập số điện thoại!\n");
-        } else if (txtSDT.getText().matches("0\\d{9}")) {
+        } else if (!txtSDT.getText().matches("0\\d{9}")) {
             sb.append("Vui lòng nhập đúng định dạng số điện thoại!\n");
         }
         if (txtEmail.getText().equals("")) {
@@ -233,7 +227,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtQueQuan = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         txtCMND = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -247,6 +240,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         cboGioiTinh = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
+        dcBirthday = new com.toedter.calendar.JDateChooser();
         pnlDanhSach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhSach = new javax.swing.JTable();
@@ -366,13 +360,13 @@ public class KhachHangJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNgaySinh)
                             .addComponent(txtCMND)
                             .addComponent(txtQueQuan)
                             .addComponent(txtDiaChi)
                             .addComponent(cboGioiTinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                            .addComponent(txtMaKH))))
+                            .addComponent(txtMaKH)
+                            .addComponent(dcBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(84, 84, 84)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -415,10 +409,10 @@ public class KhachHangJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(cboGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dcBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtCMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -442,7 +436,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         tabs.addTab("CẬP NHẬT", jPanel1);
@@ -590,6 +584,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cboGioiTinh;
+    private com.toedter.calendar.JDateChooser dcBirthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -615,7 +610,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtQueQuan;
     private javax.swing.JTextField txtSDT;
     // End of variables declaration//GEN-END:variables
