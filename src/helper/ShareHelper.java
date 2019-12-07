@@ -14,19 +14,20 @@ import java.nio.file.StandardCopyOption;
 import javax.swing.ImageIcon;
 import model.NhanVien;
 
-
 /**
  *
  * @author maihu
  */
 public class ShareHelper {
+
     public static final Image APP_ICON;
-    static{
-        String file="/images/hb.png";
+
+    static {
+        String file = "/images/hb.png";
         APP_ICON = new ImageIcon(ShareHelper.class.getResource(file)).getImage();
     }
-    
-    public static boolean saveLogo(File file){
+
+    public static boolean saveLogo(File file) {
         File dir = new File("logos");
         if (!dir.exists()) {
             dir.mkdirs();
@@ -41,19 +42,19 @@ public class ShareHelper {
             return false;
         }
     }
-    
-    public static ImageIcon readLogo(String fileName){
+
+    public static ImageIcon readLogo(String fileName) {
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
-    
+
     public static NhanVien USER = null;
-    
-    public static void logoff(){
+
+    public static void logoff() {
         ShareHelper USER = null;
     }
-    
-    public static boolean authenticated(){
+
+    public static boolean authenticated() {
         return ShareHelper.USER != null;
     }
 }
