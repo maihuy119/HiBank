@@ -352,7 +352,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Lãi suất:");
+        jLabel9.setText("Lãi suất (%):");
 
         txtLaiSuat.setEditable(false);
         txtLaiSuat.setText("15");
@@ -596,7 +596,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             if (this.index >= 0) {
                 System.out.println(index);
                 this.edit();
-                tabs.setSelectedIndex(1);
+                tabs.setSelectedIndex(0);
             }
         }
     }//GEN-LAST:event_tblDanhSachMouseClicked

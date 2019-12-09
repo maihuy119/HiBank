@@ -31,6 +31,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
     public ProfileJFrame(NhanVien nv) {
         initComponents();
         this.nhanVien = nv;
+        init();
     }
 
     public NhanVien nhanVien;

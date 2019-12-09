@@ -103,11 +103,8 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         lblMaNV.setText("Tên đăng nhập");
 
-        txtMaNV.setText("admin");
-
         lblMatKhau.setText("Mật khẩu");
 
-        txtMatKhau.setText("1");
         txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatKhauActionPerformed(evt);

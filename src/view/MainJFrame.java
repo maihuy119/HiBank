@@ -5,6 +5,7 @@
  */
 package view;
 
+import com.toedter.calendar.JCalendar;
 import helper.DialogHelper;
 import helper.ShareHelper;
 import java.awt.event.ActionEvent;
@@ -163,7 +164,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         btnHoSo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        btnHuongDan = new javax.swing.JButton();
+        btnCalendar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lblDongHo = new javax.swing.JLabel();
@@ -187,7 +188,6 @@ public final class MainJFrame extends javax.swing.JFrame {
         mniTKHoSo = new javax.swing.JMenuItem();
         mniTKDoanhThu = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
-        mniHuongDan = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mniGioiThieu = new javax.swing.JMenuItem();
 
@@ -282,18 +282,18 @@ public final class MainJFrame extends javax.swing.JFrame {
         jToolBar2.add(jButton1);
         jToolBar2.add(jSeparator6);
 
-        btnHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Globe.png"))); // NOI18N
-        btnHuongDan.setText("Hướng dẫn");
-        btnHuongDan.setFocusable(false);
-        btnHuongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHuongDan.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        btnHuongDan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnHuongDan.addActionListener(new java.awt.event.ActionListener() {
+        btnCalendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Calendar.png"))); // NOI18N
+        btnCalendar.setText("Lịch");
+        btnCalendar.setFocusable(false);
+        btnCalendar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCalendar.setMargin(new java.awt.Insets(2, 22, 2, 22));
+        btnCalendar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCalendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuongDanActionPerformed(evt);
+                btnCalendarActionPerformed(evt);
             }
         });
-        jToolBar2.add(btnHuongDan);
+        jToolBar2.add(btnCalendar);
 
         getContentPane().add(jToolBar2, java.awt.BorderLayout.PAGE_START);
 
@@ -443,16 +443,6 @@ public final class MainJFrame extends javax.swing.JFrame {
         jMenuBar2.add(mnuThongKe);
 
         mnuTroGiup.setText("Trợ giúp");
-
-        mniHuongDan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Globe.png"))); // NOI18N
-        mniHuongDan.setText("Hướng dẫn sử dụng");
-        mniHuongDan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniHuongDanActionPerformed(evt);
-            }
-        });
-        mnuTroGiup.add(mniHuongDan);
         mnuTroGiup.add(jSeparator3);
 
         mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Brick house.png"))); // NOI18N
@@ -490,10 +480,6 @@ public final class MainJFrame extends javax.swing.JFrame {
     private void btnHoSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoSoActionPerformed
         mniHoSoActionPerformed(evt);
     }//GEN-LAST:event_btnHoSoActionPerformed
-
-    private void btnHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuongDanActionPerformed
-        mniHuongDanActionPerformed(evt);
-    }//GEN-LAST:event_btnHuongDanActionPerformed
 
     private void mniThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongTinActionPerformed
         openProfile();
@@ -539,10 +525,6 @@ public final class MainJFrame extends javax.swing.JFrame {
         openThongKe(2);
     }//GEN-LAST:event_mniTKDoanhThuActionPerformed
 
-    private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
-        openAbout();
-    }//GEN-LAST:event_mniHuongDanActionPerformed
-
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
         openAbout();
     }//GEN-LAST:event_mniGioiThieuActionPerformed
@@ -576,6 +558,10 @@ public final class MainJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         mniThanhToanActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalendarActionPerformed
+        new CalenderJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_btnCalendarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -614,9 +600,9 @@ public final class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalendar;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnHoSo;
-    private javax.swing.JButton btnHuongDan;
     private javax.swing.JButton btnKetThuc;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton jButton1;
@@ -636,7 +622,6 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDoiMK;
     private javax.swing.JMenuItem mniGioiThieu;
     private javax.swing.JMenuItem mniHoSo;
-    private javax.swing.JMenuItem mniHuongDan;
     private javax.swing.JMenuItem mniKetThuc;
     private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniLoaiHinh;
@@ -651,4 +636,5 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuThongKe;
     private javax.swing.JMenu mnuTroGiup;
     // End of variables declaration//GEN-END:variables
+    
 }

@@ -6,11 +6,20 @@
 package view;
 
 import dao.KhachHangDAO;
-import helper.DateHelper;
 import helper.DialogHelper;
 import helper.ShareHelper;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import model.KhachHang;
 
@@ -74,6 +83,9 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtSDT.setText("");
         txtEmail.setText("");
         txtGhiChu.setText("");
+        lblAnh.setIcon(null);
+        lblAnh.setText("Ảnh thẻ");
+        setStatus(true);
     }
 
     void setModel(KhachHang model) {
@@ -87,6 +99,10 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtSDT.setText(model.getSoDienThoai().trim());
         txtEmail.setText(model.getEmail());
         txtGhiChu.setText(model.getGhiChu());
+        if (model.getAnh() != null) {
+            lblAnh.setIcon(ShareHelper.readLogo(model.getAnh()));
+            lblAnh.setText("");
+        }
     }
 
     KhachHang getModel() {
@@ -100,11 +116,27 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         model.setSoDienThoai(txtSDT.getText());
         model.setEmail(txtEmail.getText());
         model.setGhiChu(txtGhiChu.getText());
+        
+        model.setAnh(lblAnh.getToolTipText());
+        
         return model;
+    }
+    
+    void selectImage() {
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            if (ShareHelper.saveLogo(file)) {
+                // Hiển thị hình lên form
+                lblAnh.setIcon(ShareHelper.readLogo(file.getName()));
+                lblAnh.setToolTipText(file.getName());
+            }
+        }
     }
 
     void setStatus(boolean insertable) {
-
+        btnThem.setEnabled(insertable);
+        btnXoa.setEnabled(!insertable);
+        btnCapNhat.setEnabled(!insertable);
     }
 
     void insert() {
@@ -194,6 +226,9 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         } else if (!txtEmail.getText().matches("^(.+)@(.+)$")) {
             sb.append("Vui lòng nhập đúng định dạng email!\n");
         }
+        if (lblAnh.getIcon()==null) {
+            sb.append("Vui lòng nhập ảnh khách hàng!\n");
+        }
         if (sb.length() != 0) {
             sb.append("Mời nhập lại!");
             DialogHelper.alert(this, sb.toString());
@@ -211,6 +246,9 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pmnPicture = new javax.swing.JPopupMenu();
+        mniLoad = new javax.swing.JMenuItem();
+        mniRemove = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -244,6 +282,22 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         pnlDanhSach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhSach = new javax.swing.JTable();
+
+        mniLoad.setText("Load ảnh");
+        mniLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLoadActionPerformed(evt);
+            }
+        });
+        pmnPicture.add(mniLoad);
+
+        mniRemove.setText("Xóa ảnh");
+        mniRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniRemoveActionPerformed(evt);
+            }
+        });
+        pmnPicture.add(mniRemove);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("QUẢN LÝ KHÁCH HÀNG");
@@ -282,6 +336,8 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblAnh.setText("Ảnh thẻ");
+        lblAnh.setComponentPopupMenu(pmnPicture);
+        lblAnh.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -530,6 +586,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.load();
+        this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
 
     private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
@@ -541,6 +598,18 @@ public class KhachHangJFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tblDanhSachMouseClicked
+
+    private void mniRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRemoveActionPerformed
+        lblAnh.setIcon(null);
+        lblAnh.setText("Ảnh thẻ");
+    }//GEN-LAST:event_mniRemoveActionPerformed
+
+    JFileChooser chooser = new JFileChooser();
+    private void mniLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoadActionPerformed
+        
+        
+        selectImage();
+    }//GEN-LAST:event_mniLoadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -601,6 +670,9 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAnh;
+    private javax.swing.JMenuItem mniLoad;
+    private javax.swing.JMenuItem mniRemove;
+    private javax.swing.JPopupMenu pmnPicture;
     private javax.swing.JPanel pnlDanhSach;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblDanhSach;

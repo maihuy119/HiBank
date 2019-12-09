@@ -348,7 +348,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="L&#xe3;i su&#x1ea5;t:"/>
+                <Property name="text" type="java.lang.String" value="L&#xe3;i su&#x1ea5;t (%):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtLaiSuat">
