@@ -204,7 +204,6 @@ public final class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(619, 250));
         jLabel1.setPreferredSize(new java.awt.Dimension(659, 240));
@@ -490,11 +489,15 @@ public final class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniDoiMKActionPerformed
 
     private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
-        logoff();
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn đăng xuất?")) {
+            logoff();
+        }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
     private void mniKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKetThucActionPerformed
-        System.exit(0);
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn kết thúc chương trình?")) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_mniKetThucActionPerformed
 
     private void mniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNhanVienActionPerformed
@@ -535,7 +538,6 @@ public final class MainJFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        System.out.println(checkAdmin());
         if (checkAdmin() == true) {
             mniNhanVien.setEnabled(true);
             mniLoaiHinh.setEnabled(true);
@@ -636,5 +638,5 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuThongKe;
     private javax.swing.JMenu mnuTroGiup;
     // End of variables declaration//GEN-END:variables
-    
+
 }
