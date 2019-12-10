@@ -22,12 +22,12 @@ public class ProfileJFrame extends javax.swing.JFrame {
         initComponents();
         init();
     }
-    
+
     void init() {
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
     }
-    
+
     public ProfileJFrame(NhanVien nv) {
         initComponents();
         this.nhanVien = nv;
@@ -35,6 +35,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
     }
 
     public NhanVien nhanVien;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,8 +66,8 @@ public class ProfileJFrame extends javax.swing.JFrame {
         txtNgayCongTac = new javax.swing.JTextField();
         rdoNam = new javax.swing.JRadioButton();
         rdoNu = new javax.swing.JRadioButton();
-        lblAnh = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        pnlAnh = new javax.swing.JPanel();
+        lblAnh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("THÔNG TIN CÁ NHÂN");
@@ -98,6 +99,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Ngày công tác:");
 
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Refresh.png"))); // NOI18N
         btnDoiMK.setText("Đổi mật khẩu");
         btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,25 +130,17 @@ public class ProfileJFrame extends javax.swing.JFrame {
         rdoNu.setText("Nữ");
         rdoNu.setEnabled(false);
 
-        lblAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel11.setText("Ảnh thẻ");
-
-        javax.swing.GroupLayout lblAnhLayout = new javax.swing.GroupLayout(lblAnh);
-        lblAnh.setLayout(lblAnhLayout);
-        lblAnhLayout.setHorizontalGroup(
-            lblAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblAnhLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel11)
-                .addContainerGap(55, Short.MAX_VALUE))
+        javax.swing.GroupLayout pnlAnhLayout = new javax.swing.GroupLayout(pnlAnh);
+        pnlAnh.setLayout(pnlAnhLayout);
+        pnlAnhLayout.setHorizontalGroup(
+            pnlAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
         );
-        lblAnhLayout.setVerticalGroup(
-            lblAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblAnhLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel11)
-                .addContainerGap(89, Short.MAX_VALUE))
+        pnlAnhLayout.setVerticalGroup(
+            pnlAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,12 +176,12 @@ public class ProfileJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDoiMK)
-                        .addGap(40, 40, 40))))
+                        .addGap(31, 31, 31))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(273, 273, 273)
                 .addComponent(jLabel1)
@@ -225,7 +219,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(txtQueQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -239,7 +233,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(txtNgayCongTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDoiMK))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -292,7 +286,6 @@ public class ProfileJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDoiMK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -301,7 +294,8 @@ public class ProfileJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel lblAnh;
+    private javax.swing.JLabel lblAnh;
+    private javax.swing.JPanel pnlAnh;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTextField txtCMND;
@@ -324,5 +318,8 @@ public class ProfileJFrame extends javax.swing.JFrame {
         txtDiaChi.setText(nhanVien.getDiaChiThuongTru());
         txtSoDT.setText(nhanVien.getSoDienThoai());
         txtNgayCongTac.setText(DateHelper.toString(nhanVien.getNgayCongTac()));
+        if (nhanVien.getAnh() != null) {
+            lblAnh.setIcon(ShareHelper.readLogo(nhanVien.getAnh()));
+        }
     }
 }
