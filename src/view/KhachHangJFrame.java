@@ -176,11 +176,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     void update() {
         KhachHang model = getModel();
         model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
-        KhachHang kt = dao.findByCMND(txtCMND.getText());
-        if (kt!=null) {
-            DialogHelper.alert(this, "Khách hàng này đã tồn tại! Vui lòng kiểm tra lại!");
-            return;
-        }
         try {
             dao.update(model);
             this.load();
