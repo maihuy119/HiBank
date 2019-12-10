@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class HoSo {
     private String maHoSo;
-    private String maNguoiVay;
+    private int maNguoiVay;
     private String hoTenNguoiVay;
     private String loaiHinhVay;
     private float soTien;
@@ -32,7 +32,7 @@ public class HoSo {
     public HoSo() {
     }
 
-    public HoSo(String maHoSo, String maNguoiVay, String hoTenNguoiVay, String loaiHinhVay, float soTien, String mucDich, Date ngayVay, String nhanVienThucHien, Date ngayHetHan, String taiSanTheChap, String ghiChu, float soTienLai, Date ngayTra, String thoiHan, boolean daThanhToan, String cmnd) {
+    public HoSo(String maHoSo, int maNguoiVay, String hoTenNguoiVay, String loaiHinhVay, float soTien, String mucDich, Date ngayVay, String nhanVienThucHien, Date ngayHetHan, String taiSanTheChap, String ghiChu, float soTienLai, Date ngayTra, String thoiHan, boolean daThanhToan, String cmnd) {
         this.maHoSo = maHoSo;
         this.maNguoiVay = maNguoiVay;
         this.hoTenNguoiVay = hoTenNguoiVay;
@@ -59,11 +59,11 @@ public class HoSo {
         this.maHoSo = maHoSo;
     }
 
-    public String getMaNguoiVay() {
+    public int getMaNguoiVay() {
         return maNguoiVay;
     }
 
-    public void setMaNguoiVay(String maNguoiVay) {
+    public void setMaNguoiVay(int maNguoiVay) {
         this.maNguoiVay = maNguoiVay;
     }
 

@@ -78,7 +78,8 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     }
 
     void setStatus(boolean insertable) {
-
+        btnThem.setEnabled(insertable);
+        btnSua.setEnabled(!insertable);
     }
 
     void insert() {
@@ -88,6 +89,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
             dao.insert(model);
             this.clear();
             this.load();
+            setStatus(true);
             DialogHelper.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,6 +117,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
         try {
             dao.update(model);
             this.load();
+            setStatus(true);
             DialogHelper.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             DialogHelper.alert(this, "Cập nhật thất bại!");
@@ -352,6 +355,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.load();
+        this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
@@ -367,6 +371,7 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         if (isvalid()) {
             this.update();
+            this.clear();
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 

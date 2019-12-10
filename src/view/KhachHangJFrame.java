@@ -84,7 +84,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         txtEmail.setText("");
         txtGhiChu.setText("");
         lblAnh.setIcon(null);
-        lblAnh.setText("Ảnh thẻ");
         setStatus(true);
     }
 
@@ -145,6 +144,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         KhachHang kt = dao.findByCMND(txtCMND.getText());
         if (kt!=null) {
             DialogHelper.alert(this, "Khách hàng này đã tồn tại! Vui lòng kiểm tra lại!");
+            txtCMND.requestFocus();
             return;
         }
         try {
@@ -163,6 +163,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         try {
             int makh = (int) tblDanhSach.getValueAt(this.index, 0);
             KhachHang model = dao.findById(makh);
+            model.setCmnd(dao.findById(makh).getCmnd());
             if (model != null) {
                 this.setModel(model);
                 this.setStatus(false);
@@ -179,6 +180,8 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         try {
             dao.update(model);
             this.load();
+            clear();
+            setStatus(true);
             DialogHelper.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             DialogHelper.alert(this, "Cập nhật thất bại!");
@@ -605,7 +608,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
 
     private void mniRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRemoveActionPerformed
         lblAnh.setIcon(null);
-        lblAnh.setText("Ảnh thẻ");
     }//GEN-LAST:event_mniRemoveActionPerformed
 
     JFileChooser chooser = new JFileChooser();

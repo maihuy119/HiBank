@@ -105,7 +105,7 @@ public class HoSoDAO {
     private HoSo readFromResultSet(ResultSet rs) throws SQLException {
         HoSo model = new HoSo();
         model.setMaHoSo(rs.getString("ma_ho_so"));
-        model.setMaNguoiVay(rs.getString("ma_nguoi_vay"));
+        model.setMaNguoiVay(rs.getInt("ma_nguoi_vay"));
         model.setHoTenNguoiVay(rs.getString("ho_ten_nguoi_vay"));
         model.setLoaiHinhVay(rs.getString("loai_hinh_vay"));
         model.setSoTien(rs.getFloat("so_tien"));

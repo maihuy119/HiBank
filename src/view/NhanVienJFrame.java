@@ -85,7 +85,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         txtChucVu.setText("");
         txtLuong.setText("");
         lblAnh.setIcon(null);
-        lblAnh.setText("Ảnh thẻ");
         setStatus(true);
     }
 
@@ -207,6 +206,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             try {
                 dao.update(model);
                 this.load();
+                this.clear();
+                this.setStatus(true);
                 DialogHelper.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 DialogHelper.alert(this, "Cập nhật thất bại!");
@@ -655,7 +656,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 
     private void mniRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRemoveActionPerformed
         lblAnh.setIcon(null);
-        lblAnh.setText("Ảnh thẻ");
     }//GEN-LAST:event_mniRemoveActionPerformed
 
     

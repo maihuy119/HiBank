@@ -96,6 +96,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         txtNgayHetHan.setText("");
         txtTaiSanTheChap.setText("");
         txtGhiChu.setText("");
+        setStatus(true);
     }
 
     void setModel(HoSo model) {
@@ -128,12 +129,13 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     }
 
     void setStatus(boolean insertable) {
-
+        btnThem.setEnabled(insertable);
+        btnCapNhat.setEnabled(!insertable);
     }
 
     void insert() {
         HoSo model = getModel();
-        String maNgVay = String.valueOf((khdao.findByCMND(txtCmnd.getText()).getMaKhachHang()));
+        int maNgVay = ((khdao.findByCMND(txtCmnd.getText()).getMaKhachHang()));
         model.setMaNguoiVay(maNgVay);
         model.setNhanVienThucHien(String.valueOf(ShareHelper.USER.getMaNV()));
         model.setDaThanhToan(false);
@@ -154,6 +156,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         try {
             String mahs = (String) tblDanhSach.getValueAt(this.index, 0);
             HoSo model = hsdao.findById(mahs);
+            model.setCmnd(khdao.findById(hsdao.findById(mahs).getMaNguoiVay()).getCmnd().trim());
             if (model != null) {
                 this.setModel(model);
                 this.setStatus(false);
@@ -170,6 +173,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         try {
             hsdao.update(model);
             this.load();
+            setStatus(true);
             DialogHelper.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             DialogHelper.alert(this, "Cập nhật thất bại!");
@@ -228,9 +232,6 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             sb.append("Vui lòng nhập số tiền vay!\n");
         } else if (Float.valueOf(txtSoTien.getText())<=0) {
             sb.append("Số tiền vay phải dương!");
-        }
-        if (txtTaiSanTheChap.getText().length() == 0) {
-            sb.append("Vui lòng nhập tài sản thế chấp!\n");
         }
         if (sb.length() != 0) {
             sb.append("Mời nhập lại!");
@@ -568,6 +569,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fillComboBox();
         load();
+        setStatus(true);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -583,8 +585,8 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        if (isvalid()) {
-            this.update();
+        if (this.isvalid()) {
+            update();
         }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
