@@ -53,6 +53,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     void init() {
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
+        txtNgayHetHan.setText(DateHelper.toString(new Date(),"dd/MM/yyyy"));
     }
 
     void load() {
@@ -572,8 +573,9 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (isvalid()) {
             if (khdao.findByCMND(txtCmnd.getText()) == null) {
-                DialogHelper.alert(this, "Khách hàng này chưa có thông tin. Hãy nhập thông tin!!");
-                new KhachHangJFrame().setVisible(true);
+                if (DialogHelper.confirm(this, "Khách hàng này chưa có thông tin. Hãy nhập thông tin!!")) {
+                    new KhachHangJFrame().setVisible(true);
+                }
             } else {
                 this.insert();
             }
