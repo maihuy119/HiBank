@@ -338,7 +338,6 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblAnh">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x1ea2;nh th&#x1ebb;"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="pmnPicture"/>
                     </Property>

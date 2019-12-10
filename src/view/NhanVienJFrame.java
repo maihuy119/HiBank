@@ -380,23 +380,15 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         pnlAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlAnh.setComponentPopupMenu(pmnPicture);
 
-        lblAnh.setText("Ảnh thẻ");
-
         javax.swing.GroupLayout pnlAnhLayout = new javax.swing.GroupLayout(pnlAnh);
         pnlAnh.setLayout(pnlAnhLayout);
         pnlAnhLayout.setHorizontalGroup(
             pnlAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAnhLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(lblAnh)
-                .addContainerGap(62, Short.MAX_VALUE))
+            .addComponent(lblAnh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
         pnlAnhLayout.setVerticalGroup(
             pnlAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAnhLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(lblAnh)
-                .addGap(88, 88, 88))
+            .addComponent(lblAnh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
         );
 
         btnThem.setText("Thêm");

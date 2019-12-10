@@ -142,6 +142,11 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     void insert() {
         KhachHang model = getModel();
         model.setNgayTao(new Date());
+        KhachHang kt = dao.findByCMND(txtCMND.getText());
+        if (kt!=null) {
+            DialogHelper.alert(this, "Khách hàng này đã tồn tại! Vui lòng kiểm tra lại!");
+            return;
+        }
         try {
             dao.insert(model);
             this.clear();
@@ -171,6 +176,11 @@ public class KhachHangJFrame extends javax.swing.JFrame {
     void update() {
         KhachHang model = getModel();
         model.setMaKhachHang(Integer.parseInt(txtMaKH.getText()));
+        KhachHang kt = dao.findByCMND(txtCMND.getText());
+        if (kt!=null) {
+            DialogHelper.alert(this, "Khách hàng này đã tồn tại! Vui lòng kiểm tra lại!");
+            return;
+        }
         try {
             dao.update(model);
             this.load();
@@ -335,7 +345,6 @@ public class KhachHangJFrame extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblAnh.setText("Ảnh thẻ");
         lblAnh.setComponentPopupMenu(pmnPicture);
         lblAnh.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 

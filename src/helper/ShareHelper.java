@@ -28,7 +28,7 @@ public class ShareHelper {
     }
 
     public static boolean saveLogo(File file) {
-        File dir = new File("logos");
+        File dir = new File("/logos");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -44,7 +44,7 @@ public class ShareHelper {
     }
 
     public static ImageIcon readLogo(String fileName) {
-        File path = new File("logos", fileName);
+        File path = new File("/logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 
