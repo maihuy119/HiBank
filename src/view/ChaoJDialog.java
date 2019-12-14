@@ -58,6 +58,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
         jProgressBar1.setStringPainted(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_1.png"))); // NOI18N
         getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);

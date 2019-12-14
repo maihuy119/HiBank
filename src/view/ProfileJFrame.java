@@ -71,6 +71,7 @@ public class ProfileJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("THÔNG TIN CÁ NHÂN");
+        setPreferredSize(new java.awt.Dimension(819, 525));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);

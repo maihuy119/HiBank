@@ -85,6 +85,12 @@ public class LoaiHinhVayJFrame extends javax.swing.JFrame {
     void insert() {
         LoaiHinhVay model = getModel();
 //        model.setNgayTao(new Date());
+        LoaiHinhVay lh = dao.findById(txtMaLoai.getText());
+        if (lh!=null) {
+            DialogHelper.alert(this, "Mã loại hình này đã tồn tại! Vui lòng kiểm tra lại!");
+            txtMaLoai.requestFocus();
+            return;
+        }
         try {
             dao.insert(model);
             this.clear();
