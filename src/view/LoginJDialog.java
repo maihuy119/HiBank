@@ -83,7 +83,6 @@ public class LoginJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblImage = new javax.swing.JLabel();
         pnlForm = new javax.swing.JPanel();
         lblMaNV = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
@@ -92,14 +91,13 @@ public class LoginJDialog extends javax.swing.JDialog {
         lblTitle = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
         btnKetThuc = new javax.swing.JButton();
+        lblImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("HỆ THỐNG QUẢN LÝ NGÂN HÀNG");
         setBackground(new java.awt.Color(0, 0, 255));
 
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security.png"))); // NOI18N
-        lblImage.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lblImage, java.awt.BorderLayout.LINE_START);
+        pnlForm.setBackground(new java.awt.Color(255, 248, 244));
 
         lblMaNV.setText("Tên đăng nhập");
 
@@ -112,7 +110,7 @@ public class LoginJDialog extends javax.swing.JDialog {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(204, 0, 0));
+        lblTitle.setForeground(new java.awt.Color(32, 136, 203));
         lblTitle.setText("ĐĂNG NHẬP");
 
         btnDangNhap.setText("Đăng nhập");
@@ -129,27 +127,33 @@ public class LoginJDialog extends javax.swing.JDialog {
             }
         });
 
+        lblImage.setBackground(new java.awt.Color(255, 248, 244));
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/security.png"))); // NOI18N
+        lblImage.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout pnlFormLayout = new javax.swing.GroupLayout(pnlForm);
         pnlForm.setLayout(pnlFormLayout);
         pnlFormLayout.setHorizontalGroup(
             pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFormLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(lblImage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblMaNV)
-                        .addComponent(lblMatKhau)
-                        .addComponent(txtMaNV)
-                        .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
                     .addGroup(pnlFormLayout.createSequentialGroup()
-                        .addComponent(btnDangNhap)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnKetThuc)))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblMaNV)
+                            .addComponent(lblMatKhau)
+                            .addGroup(pnlFormLayout.createSequentialGroup()
+                                .addComponent(btnDangNhap)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnKetThuc))
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtMaNV))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         pnlFormLayout.setVerticalGroup(
             pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +172,10 @@ public class LoginJDialog extends javax.swing.JDialog {
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap)
                     .addComponent(btnKetThuc))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(pnlForm, java.awt.BorderLayout.CENTER);

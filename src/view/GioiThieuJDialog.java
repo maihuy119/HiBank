@@ -44,6 +44,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Giới thiệu");
 
+        lblTitle.setBackground(new java.awt.Color(255, 248, 244));
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
         lblTitle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -53,6 +54,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         getContentPane().add(lblTitle, java.awt.BorderLayout.PAGE_START);
 
         txtGioiThieu.setEditable(false);
+        txtGioiThieu.setBackground(new java.awt.Color(255, 248, 244));
         txtGioiThieu.setText("HiBankManagement là dự án phần mềm quản lý ngân hàng. Mục tiêu của dự án này là tạo ra phần mềm giải quyết các vấn đề về quản lý ngân hàng hiện có.\n\nYêu cầu về môi trường:\n1. Hệ điều hành bất kỳ\n2. JDK 1.8 trở lên\n3. SQL Server 2008 trở lên");
         txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -8,6 +8,8 @@ package view;
 import dao.HoSoDAO;
 import dao.ThongKeDAO;
 import helper.ShareHelper;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -39,6 +41,24 @@ public class ThongKeJFrame extends javax.swing.JFrame {
     void init() {
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
+        
+        tblDoanhThu.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tblDoanhThu.getTableHeader().setOpaque(false);
+        tblDoanhThu.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblDoanhThu.getTableHeader().setForeground(new Color(32, 136, 203));
+        tblDoanhThu.setRowHeight(25);
+        
+        tblHoSo.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tblHoSo.getTableHeader().setOpaque(false);
+        tblHoSo.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblHoSo.getTableHeader().setForeground(new Color(32, 136, 203));
+        tblHoSo.setRowHeight(25);
+        
+        tblKhachHang.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tblKhachHang.getTableHeader().setOpaque(false);
+        tblKhachHang.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblKhachHang.getTableHeader().setForeground(new Color(32, 136, 203));
+        tblKhachHang.setRowHeight(25);
     }
     
     void fillComboBoxNam() {
@@ -94,7 +114,7 @@ public class ThongKeJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
         pnlKhachHang = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,6 +127,7 @@ public class ThongKeJFrame extends javax.swing.JFrame {
         tblDoanhThu = new javax.swing.JTable();
         cboNam = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TỔNG HỢP THỐNG KÊ");
@@ -116,9 +137,11 @@ public class ThongKeJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("TỔNG HỢP THỐNG KÊ");
+        jPanel1.setBackground(new java.awt.Color(255, 248, 244));
+
+        tabs.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        pnlKhachHang.setBackground(new java.awt.Color(255, 248, 244));
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,6 +162,11 @@ public class ThongKeJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblKhachHang.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tblKhachHang.setRowHeight(25);
+        tblKhachHang.setSelectionBackground(new java.awt.Color(232, 97, 85));
+        tblKhachHang.setShowVerticalLines(false);
+        tblKhachHang.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblKhachHang);
 
         javax.swing.GroupLayout pnlKhachHangLayout = new javax.swing.GroupLayout(pnlKhachHang);
@@ -154,11 +182,13 @@ public class ThongKeJFrame extends javax.swing.JFrame {
             pnlKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlKhachHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabs.addTab("KHÁCH HÀNG", pnlKhachHang);
+
+        pnlHoSo.setBackground(new java.awt.Color(255, 248, 244));
 
         tblHoSo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,6 +209,11 @@ public class ThongKeJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblHoSo.setFocusable(false);
+        tblHoSo.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tblHoSo.setRowHeight(25);
+        tblHoSo.setSelectionBackground(new java.awt.Color(232, 97, 85));
+        tblHoSo.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tblHoSo);
 
         javax.swing.GroupLayout pnlHoSoLayout = new javax.swing.GroupLayout(pnlHoSo);
@@ -194,12 +229,15 @@ public class ThongKeJFrame extends javax.swing.JFrame {
             pnlHoSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoSoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabs.addTab("HỒ SƠ", pnlHoSo);
 
+        pnlDoanhThu.setBackground(new java.awt.Color(255, 248, 244));
+
+        tblDoanhThu.setBackground(new java.awt.Color(255, 248, 244));
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -219,8 +257,15 @@ public class ThongKeJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDoanhThu.setFocusable(false);
+        tblDoanhThu.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tblDoanhThu.setSelectionBackground(new java.awt.Color(232, 97, 85));
+        tblDoanhThu.setShowVerticalLines(false);
+        tblDoanhThu.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblDoanhThu);
 
+        cboNam.setBackground(new java.awt.Color(255, 248, 244));
+        cboNam.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboNam.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -232,6 +277,8 @@ public class ThongKeJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 248, 244));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setText("NĂM:");
 
         javax.swing.GroupLayout pnlDoanhThuLayout = new javax.swing.GroupLayout(pnlDoanhThu);
@@ -256,32 +303,52 @@ public class ThongKeJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabs.addTab("DOANH THU", pnlDoanhThu);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setText("TỔNG HỢP THỐNG KÊ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 725, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tabs)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addComponent(jLabel1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tabs)
+                    .addGap(7, 7, 7)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabs)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabs))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -337,6 +404,7 @@ public class ThongKeJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboNam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -117,4 +117,14 @@ public class KhachHangDAO {
         return model;
     }
 
+    public List<KhachHang> selectByName(String keyword) {
+        String sql = "SELECT * FROM tbl_KhachHang WHERE ho_ten LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+    
+    public List<KhachHang> selectByCMND(String keyword) {
+        String sql = "SELECT * FROM tbl_KhachHang WHERE cmnd LIKE ?";
+        return select(sql, keyword + "%");
+    }
+
 }

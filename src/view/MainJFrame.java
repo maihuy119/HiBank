@@ -5,14 +5,20 @@
  */
 package view;
 
+import com.sun.swing.internal.plaf.basic.resources.basic;
 import com.toedter.calendar.JCalendar;
 import helper.DialogHelper;
 import helper.ShareHelper;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComponent;
 import javax.swing.Timer;
+import javax.swing.plaf.basic.BasicMenuBarUI;
+import javax.swing.plaf.basic.BasicToolBarUI;
 
 /**
  *
@@ -54,6 +60,13 @@ public final class MainJFrame extends javax.swing.JFrame {
         mniNhanVien.setEnabled(false);
         mniLoaiHinh.setEnabled(false);
         mnuThongKe.setEnabled(false);
+
+        jToolBar2.setUI(new BasicToolBarUI() {
+            public void paint(Graphics g, JComponent c) {
+                g.setColor(new Color(255,248,244));
+                g.fillRect(0, 0, c.getWidth(), c.getHeight());
+            }
+        });
     }
 
     void openLogin() {
@@ -155,7 +168,6 @@ public final class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jToolBar2 = new javax.swing.JToolBar();
         btnDangXuat = new javax.swing.JButton();
         btnKetThuc = new javax.swing.JButton();
@@ -165,6 +177,9 @@ public final class MainJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         btnCalendar = new javax.swing.JButton();
+        pnlAnh = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lblDongHo = new javax.swing.JLabel();
@@ -204,20 +219,22 @@ public final class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
-        jLabel1.setMinimumSize(new java.awt.Dimension(619, 250));
-        jLabel1.setPreferredSize(new java.awt.Dimension(659, 240));
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
-
+        jToolBar2.setBackground(new java.awt.Color(255, 248, 244));
+        jToolBar2.setForeground(new java.awt.Color(255, 248, 244));
         jToolBar2.setRollover(true);
         jToolBar2.setMinimumSize(new java.awt.Dimension(66, 25));
         jToolBar2.setPreferredSize(new java.awt.Dimension(100, 70));
 
+        btnDangXuat.setBackground(new java.awt.Color(255, 248, 244));
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Log out.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnDangXuat.setFocusPainted(false);
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDangXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnDangXuat.setRequestFocusEnabled(false);
+        btnDangXuat.setVerifyInputWhenFocusTarget(false);
         btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +243,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         });
         jToolBar2.add(btnDangXuat);
 
+        btnKetThuc.setBackground(new java.awt.Color(255, 248, 244));
         btnKetThuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Stop.png"))); // NOI18N
         btnKetThuc.setText("Kết thúc");
         btnKetThuc.setFocusable(false);
@@ -240,6 +258,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         jToolBar2.add(btnKetThuc);
         jToolBar2.add(jSeparator5);
 
+        btnKhachHang.setBackground(new java.awt.Color(255, 248, 244));
         btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Handshake.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setFocusable(false);
@@ -252,6 +271,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         });
         jToolBar2.add(btnKhachHang);
 
+        btnHoSo.setBackground(new java.awt.Color(255, 248, 244));
         btnHoSo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Price list.png"))); // NOI18N
         btnHoSo.setText("Hồ sơ");
         btnHoSo.setFocusable(false);
@@ -268,6 +288,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         });
         jToolBar2.add(btnHoSo);
 
+        jButton1.setBackground(new java.awt.Color(255, 248, 244));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Money.png"))); // NOI18N
         jButton1.setText("Thanh toán");
         jButton1.setFocusable(false);
@@ -281,6 +302,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         jToolBar2.add(jButton1);
         jToolBar2.add(jSeparator6);
 
+        btnCalendar.setBackground(new java.awt.Color(255, 248, 244));
         btnCalendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Calendar.png"))); // NOI18N
         btnCalendar.setText("Lịch");
         btnCalendar.setFocusable(false);
@@ -296,6 +318,17 @@ public final class MainJFrame extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar2, java.awt.BorderLayout.PAGE_START);
 
+        pnlAnh.setBackground(new java.awt.Color(255, 248, 244));
+        pnlAnh.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
+        pnlAnh.add(jLabel1, java.awt.BorderLayout.CENTER);
+        pnlAnh.add(jSeparator8, java.awt.BorderLayout.PAGE_START);
+        jSeparator8.getAccessibleContext().setAccessibleName("");
+
+        getContentPane().add(pnlAnh, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(255, 248, 244));
         jPanel1.setPreferredSize(new java.awt.Dimension(113, 36));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -618,6 +651,7 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JMenuItem mniDangXuat;
@@ -637,6 +671,7 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuQuanLy;
     private javax.swing.JMenu mnuThongKe;
     private javax.swing.JMenu mnuTroGiup;
+    private javax.swing.JPanel pnlAnh;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -37,7 +37,7 @@ public class HoSoDAO {
     }
 
     public void update(HoSo model) {
-        String sql = "UPDATE tbl_HoSo SET ho_ten_nguoi_vay=?, loai_hinh_vay=?, so_tien=?, muc_dich=?, tai_san_the_chap=?, ngay_het_han=?, ghi_chu=?, so_tien_lai=?, ngay_tra=?, ky_han=?, da_thanh_toan=? WHERE ma_ho_so=?";
+        String sql = "UPDATE tbl_HoSo SET ho_ten_nguoi_vay=?, loai_hinh_vay=?, so_tien=?, muc_dich=?, tai_san_the_chap=?, ngay_het_han=?, ghi_chu=?, so_tien_lai=?, ky_han=? WHERE ma_ho_so=?";
         JdbcHelper.executeUpdate(sql,
                 model.getHoTenNguoiVay(),
                 model.getLoaiHinhVay(),
@@ -47,9 +47,7 @@ public class HoSoDAO {
                 model.getNgayHetHan(),
                 model.getGhiChu(),
                 model.getSoTienLai(),
-                model.getNgayTra(),
                 model.getThoiHan(),
-                model.isDaThanhToan(),
                 model.getMaHoSo());
     }
     
@@ -71,8 +69,13 @@ public class HoSoDAO {
         return select(sql);
     }
     
-    public List<HoSo> selectByKeyword(String keyword) {
+    public List<HoSo> selectByKeywordPayment(String keyword) {
         String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+    
+    public List<HoSo> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
 

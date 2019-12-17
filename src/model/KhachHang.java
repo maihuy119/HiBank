@@ -46,6 +46,13 @@ public class KhachHang {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return cmnd.trim();
+    }
+
+    
+    
     public int getMaKhachHang() {
         return maKhachHang;
     }
