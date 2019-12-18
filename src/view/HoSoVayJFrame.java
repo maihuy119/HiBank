@@ -124,7 +124,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                     hs.getHoTenNguoiVay(),
                     khdao.findById(hs.getMaNguoiVay()),
                     hs.getLoaiHinhVay(),
-                    hs.getSoTien(),
+                    String.valueOf(hs.getSoTien()),
                     hs.getMucDich(),
                     hs.getThoiHan(),
                     hs.getNgayVay(),
@@ -135,6 +135,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                     hs.getGhiChu()
                 };
                 model.addRow(row);
+                System.out.println(Double.valueOf(hs.getSoTien()));
             }
         } catch (Exception e) {
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
@@ -231,6 +232,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         model.setSoTienLai(model.getSoTien() * Float.valueOf(txtLaiSuat.getText()) / 100);
         try {
             hsdao.update(model);
+            this.clear();
             this.load(0);
             setStatus(true);
             DialogHelper.alert(this, "Cập nhật thành công!");
@@ -351,6 +353,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("QUẢN LÝ HỒ SƠ VAY");
+        setPreferredSize(new java.awt.Dimension(1462, 921));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -390,24 +393,24 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         jLabel12.setText("Ghi chú");
 
         txtHoTen.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtHoTen.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtHoTen.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtHoTen.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtHoTen.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtHoTen.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtHoTen.setPreferredSize(new java.awt.Dimension(6, 35));
 
         txtMucDich.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtMucDich.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtMucDich.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtMucDich.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtMucDich.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtMucDich.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtMucDich.setPreferredSize(new java.awt.Dimension(6, 35));
 
         txtNgayHetHan.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtNgayHetHan.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtNgayHetHan.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtNgayHetHan.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtNgayHetHan.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtNgayHetHan.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtNgayHetHan.setPreferredSize(new java.awt.Dimension(6, 35));
 
         txtSoTien.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtSoTien.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtSoTien.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtSoTien.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtSoTien.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtSoTien.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtSoTien.setPreferredSize(new java.awt.Dimension(6, 35));
 
         txtGhiChu.setColumns(20);
         txtGhiChu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -455,9 +458,9 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 
         txtMaHoSo.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtMaHoSo.setEnabled(false);
-        txtMaHoSo.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtMaHoSo.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtMaHoSo.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtMaHoSo.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtMaHoSo.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtMaHoSo.setPreferredSize(new java.awt.Dimension(6, 35));
         txtMaHoSo.setRequestFocusEnabled(false);
 
         txtTaiSanTheChap.setColumns(20);
@@ -469,9 +472,9 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 
         cboLoaiHinhVay.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cboLoaiHinhVay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboLoaiHinhVay.setMaximumSize(new java.awt.Dimension(6, 42));
-        cboLoaiHinhVay.setMinimumSize(new java.awt.Dimension(6, 42));
-        cboLoaiHinhVay.setPreferredSize(new java.awt.Dimension(6, 42));
+        cboLoaiHinhVay.setMaximumSize(new java.awt.Dimension(6, 35));
+        cboLoaiHinhVay.setMinimumSize(new java.awt.Dimension(6, 35));
+        cboLoaiHinhVay.setPreferredSize(new java.awt.Dimension(6, 35));
         cboLoaiHinhVay.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -488,18 +491,18 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         txtLaiSuat.setEditable(false);
         txtLaiSuat.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtLaiSuat.setText("15");
-        txtLaiSuat.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtLaiSuat.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtLaiSuat.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtLaiSuat.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtLaiSuat.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtLaiSuat.setPreferredSize(new java.awt.Dimension(6, 35));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel10.setText("Thời hạn:");
 
         cboThoiHan.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cboThoiHan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3 tháng", "6 tháng", "12 tháng" }));
-        cboThoiHan.setMaximumSize(new java.awt.Dimension(6, 42));
-        cboThoiHan.setMinimumSize(new java.awt.Dimension(6, 42));
-        cboThoiHan.setPreferredSize(new java.awt.Dimension(6, 42));
+        cboThoiHan.setMaximumSize(new java.awt.Dimension(6, 35));
+        cboThoiHan.setMinimumSize(new java.awt.Dimension(6, 35));
+        cboThoiHan.setPreferredSize(new java.awt.Dimension(6, 35));
         cboThoiHan.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -514,9 +517,9 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         jLabel11.setText("CMND:");
 
         txtCmnd.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtCmnd.setMaximumSize(new java.awt.Dimension(6, 42));
-        txtCmnd.setMinimumSize(new java.awt.Dimension(6, 42));
-        txtCmnd.setPreferredSize(new java.awt.Dimension(6, 42));
+        txtCmnd.setMaximumSize(new java.awt.Dimension(6, 35));
+        txtCmnd.setMinimumSize(new java.awt.Dimension(6, 35));
+        txtCmnd.setPreferredSize(new java.awt.Dimension(6, 35));
 
         javax.swing.GroupLayout pnlCapNhatLayout = new javax.swing.GroupLayout(pnlCapNhat);
         pnlCapNhat.setLayout(pnlCapNhatLayout);
@@ -567,15 +570,16 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCapNhatLayout.createSequentialGroup()
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(476, Short.MAX_VALUE))
+            .addGroup(pnlCapNhatLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCapNhatLayout.setVerticalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,52 +588,52 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtCmnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtMaHoSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cboLoaiHinhVay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtLaiSuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(cboThoiHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtSoTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtMucDich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 20, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNgayHetHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addGap(46, 46, 46))
         );
 
         tabs.addTab("CẬP NHẬT", pnlCapNhat);
@@ -758,7 +762,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
         );
 
         tabs.addTab("DANH SÁCH", pnlDanhSach);
@@ -794,7 +798,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 929, Short.MAX_VALUE)
         );
 
         pack();
