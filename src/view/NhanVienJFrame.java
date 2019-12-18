@@ -70,7 +70,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     nv.getDiaChiThuongTru(),
                     nv.getSoDienThoai(),
                     nv.getChucVu(),
-                    nv.getLuong(),
+                    String.format("%.0f",nv.getLuong()),
                     nv.getNgayCongTac(),
                     nv.getGhiChu()
                 };
@@ -106,7 +106,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         txtDiaChi.setText(model.getDiaChiThuongTru());
         txtSoDT.setText(model.getSoDienThoai().trim());
         txtChucVu.setText(model.getChucVu());
-        txtLuong.setText(String.valueOf(model.getLuong()));
+        txtLuong.setText(String.format("%.0f",model.getLuong()));
         if (model.getAnh() != null) {
             lblAnh.setIcon(ShareHelper.readLogo(model.getAnh()));
         }

@@ -52,7 +52,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
                     hs.getMaHoSo(),
                     hs.getHoTenNguoiVay(),
                     hs.getLoaiHinhVay(),
-                    hs.getSoTien(),
+                    String.format("%.0f", hs.getSoTien()),
                     hs.getNgayVay(),
                     hs.getNhanVienThucHien(),
                     hs.getNgayHetHan(),

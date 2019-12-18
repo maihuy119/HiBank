@@ -186,6 +186,7 @@ public class HoSoDAO {
         model.setNgayTra(rs.getDate("ngay_tra"));
         model.setThoiHan(rs.getString("ky_han"));
         model.setDaThanhToan(rs.getBoolean("da_thanh_toan"));
+        model.setTaiSanTheChap(rs.getString("tai_san_the_chap"));
         return model;
     }
 }

@@ -203,7 +203,6 @@ public final class MainJFrame extends javax.swing.JFrame {
         mniTKHoSo = new javax.swing.JMenuItem();
         mniTKDoanhThu = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mniGioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -475,7 +474,6 @@ public final class MainJFrame extends javax.swing.JFrame {
         jMenuBar2.add(mnuThongKe);
 
         mnuTroGiup.setText("Trợ giúp");
-        mnuTroGiup.add(jSeparator3);
 
         mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Brick house.png"))); // NOI18N
         mniGioiThieu.setText("Giới thiệu sản phẩm");
@@ -647,7 +645,6 @@ public final class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

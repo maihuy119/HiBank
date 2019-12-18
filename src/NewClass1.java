@@ -11,9 +11,7 @@
 public class NewClass1 {
     public static void main(String[] args)//throws Exception
     {
-    String str = "kế ton";
-        if (str.matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻếẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$")) {
-            System.out.println("ok");
-        }
+        double str = 5.0E8;
+        System.out.printf("%f",str);
     }
 }

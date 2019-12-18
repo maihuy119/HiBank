@@ -46,7 +46,6 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(815, 662));
         setPreferredSize(new java.awt.Dimension(815, 662));
 
-        lblTitle.setBackground(new java.awt.Color(255, 248, 244));
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
         lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblTitle.addMouseListener(new java.awt.event.MouseAdapter() {
