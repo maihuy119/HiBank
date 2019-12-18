@@ -198,6 +198,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             int manv = (int) tblDanhSach.getValueAt(this.index, 0);
             NhanVien model = dao.findById(manv);
             if (model != null) {
+                lblAnh.setIcon(null);
                 this.setModel(model);
                 this.setStatus(false);
             }

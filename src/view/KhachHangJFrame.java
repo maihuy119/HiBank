@@ -186,6 +186,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
             KhachHang model = dao.findById(makh);
             model.setCmnd(dao.findById(makh).getCmnd());
             if (model != null) {
+                lblAnh.setIcon(null);
                 this.setModel(model);
                 this.setStatus(false);
             }
