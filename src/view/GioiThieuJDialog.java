@@ -43,9 +43,12 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Giới thiệu");
+        setMinimumSize(new java.awt.Dimension(815, 662));
+        setPreferredSize(new java.awt.Dimension(815, 662));
 
         lblTitle.setBackground(new java.awt.Color(255, 248, 244));
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/big_logo.png"))); // NOI18N
+        lblTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblTitle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTitleMouseClicked(evt);

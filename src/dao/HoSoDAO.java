@@ -17,6 +17,7 @@ import model.HoSo;
  * @author ADMIN
  */
 public class HoSoDAO {
+
     public void insert(HoSo model) {
         String sql = "INSERT INTO tbl_HoSo (ma_nguoi_vay, ho_ten_nguoi_vay, loai_hinh_vay, so_tien, muc_dich, tai_san_the_chap, ngay_vay, nhan_vien_thuc_hien, ngay_het_han, ghi_chu, so_tien_lai, ngay_tra, ky_han, da_thanh_toan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         JdbcHelper.executeUpdate(sql,
@@ -50,7 +51,7 @@ public class HoSoDAO {
                 model.getThoiHan(),
                 model.getMaHoSo());
     }
-    
+
     public void payment(HoSo model) {
         String sql = "UPDATE tbl_HoSo SET da_thanh_toan=?, ngay_tra=? WHERE ma_ho_so=?";
         JdbcHelper.executeUpdate(sql,
@@ -63,19 +64,84 @@ public class HoSoDAO {
         String sql = "DELETE FROM tbl_HoSo WHERE ma_ho_so=?";
         JdbcHelper.executeUpdate(sql, MaHS);
     }
-    
+
     public List<HoSo> select() {
         String sql = "SELECT * FROM tbl_HoSo";
         return select(sql);
     }
-    
+
     public List<HoSo> selectByKeywordPayment(String keyword) {
         String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
-    
+
     public List<HoSo> selectByKeyword(String keyword) {
         String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeyword_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayVayASC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY ngay_vay ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayVayASC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY ngay_vay ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayVayDESC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY ngay_vay DESC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayVayDESC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY ngay_vay DESC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrSoTienASC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY so_tien ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrSoTienASC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY so_tien ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrSoTienDESC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY so_tien DESC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrSoTienDESC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY so_tien DESC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayHetHanASC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY ngay_het_han ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayHetHanASC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY ngay_het_han ASC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayHetHanDESC(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE ho_ten_nguoi_vay LIKE ? ORDER BY ngay_het_han DESC";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public List<HoSo> selectByKeywordGrNgayHetHanDESC_IPM(String keyword) {
+        String sql = "SELECT * FROM tbl_HoSo WHERE da_thanh_toan = 'false' and ho_ten_nguoi_vay LIKE ? ORDER BY ngay_het_han DESC";
         return select(sql, "%" + keyword + "%");
     }
 
@@ -84,7 +150,6 @@ public class HoSoDAO {
         List<HoSo> list = select(sql, mahs);
         return list.size() > 0 ? list.get(0) : null;
     }
-    
 
     private List<HoSo> select(String sql, Object... args) {
         List<HoSo> list = new ArrayList<>();
@@ -104,7 +169,7 @@ public class HoSoDAO {
         }
         return list;
     }
-    
+
     private HoSo readFromResultSet(ResultSet rs) throws SQLException {
         HoSo model = new HoSo();
         model.setMaHoSo(rs.getString("ma_ho_so"));
@@ -116,7 +181,7 @@ public class HoSoDAO {
         model.setNgayVay(rs.getDate("ngay_vay"));
         model.setNhanVienThucHien(rs.getString("nhan_vien_thuc_hien"));
         model.setNgayHetHan(rs.getDate("ngay_het_han"));
-        model.setGhiChu(rs.getString("ghi_chu"));       
+        model.setGhiChu(rs.getString("ghi_chu"));
         model.setSoTienLai(rs.getFloat("so_tien_lai"));
         model.setNgayTra(rs.getDate("ngay_tra"));
         model.setThoiHan(rs.getString("ky_han"));

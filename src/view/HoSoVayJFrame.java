@@ -56,7 +56,6 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     void init() {
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
-        setSize(1500, 1000);
 
         txtNgayHetHan.setText(DateHelper.toString(new Date(), "dd/MM/yyyy"));
         tblDanhSach.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -66,12 +65,58 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         tblDanhSach.setRowHeight(25);
     }
 
-    void load() {
+    void load(int sort) {
         DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
         model.setRowCount(0);
         try {
+            List<HoSo> list = null;
             String keyword = txtTimKiem2.getText();
-            List<HoSo> list = hsdao.selectByKeyword(keyword);
+            switch (sort) {
+                case 0:
+                    list = hsdao.selectByKeyword(keyword);
+                    break;
+                case 1:
+                    list = hsdao.selectByKeywordGrSoTienDESC(keyword);
+                    break;
+                case 2:
+                    list = hsdao.selectByKeywordGrSoTienASC(keyword);
+                    break;
+                case 3:
+                    list = hsdao.selectByKeywordGrNgayVayDESC(keyword);
+                    break;
+                case 4:
+                    list = hsdao.selectByKeywordGrNgayVayASC(keyword);
+                    break;
+                case 5:
+                    list = hsdao.selectByKeywordGrNgayHetHanDESC(keyword);
+                    break;
+                case 6:
+                    list = hsdao.selectByKeywordGrNgayHetHanASC(keyword);
+                    break;
+                case 7:
+                    list = hsdao.selectByKeyword_IPM(keyword);
+                    break;
+                case 8:
+                    list = hsdao.selectByKeywordGrSoTienDESC_IPM(keyword);
+                    break;
+                case 9:
+                    list = hsdao.selectByKeywordGrSoTienASC_IPM(keyword);
+                    break;
+                case 10:
+                    list = hsdao.selectByKeywordGrNgayVayDESC_IPM(keyword);
+                    break;
+                case 11:
+                    list = hsdao.selectByKeywordGrNgayVayASC_IPM(keyword);
+                    break;
+                case 12:
+                    list = hsdao.selectByKeywordGrNgayHetHanDESC_IPM(keyword);
+                    break;
+                case 13:
+                    list = hsdao.selectByKeywordGrNgayHetHanASC_IPM(keyword);
+                    break;
+                default:
+                    list = hsdao.selectByKeyword(keyword);
+            }
             for (HoSo hs : list) {
                 Object[] row = {
                     hs.getMaHoSo(),
@@ -93,7 +138,6 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-            e.printStackTrace();
         }
     }
 
@@ -159,7 +203,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         try {
             hsdao.insert(model);
             this.clear();
-            this.load();
+            this.load(0);
             DialogHelper.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -187,7 +231,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         model.setSoTienLai(model.getSoTien() * Float.valueOf(txtLaiSuat.getText()) / 100);
         try {
             hsdao.update(model);
-            this.load();
+            this.load(0);
             setStatus(true);
             DialogHelper.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
@@ -299,6 +343,9 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         pnlDanhSach = new javax.swing.JPanel();
         pnlTimKiem = new javax.swing.JPanel();
         txtTimKiem2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        cboSort = new javax.swing.JComboBox<>();
+        chkIsPay = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhSach = new javax.swing.JTable();
 
@@ -311,6 +358,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 244));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1534, 971));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(32, 136, 203));
@@ -475,7 +523,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         pnlCapNhatLayout.setHorizontalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCapNhatLayout.createSequentialGroup()
-                .addContainerGap(683, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,7 +541,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                         .addComponent(txtCmnd, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCapNhatLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(40, 40, 40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCapNhatLayout.createSequentialGroup()
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -527,7 +575,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)))
-                .addContainerGap(863, Short.MAX_VALUE))
+                .addContainerGap(476, Short.MAX_VALUE))
         );
         pnlCapNhatLayout.setVerticalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,7 +616,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNgayHetHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -576,7 +624,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -599,20 +647,57 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(32, 136, 203));
+        jLabel13.setText("Sắp xếp theo:");
+
+        cboSort.setBackground(new java.awt.Color(32, 136, 203));
+        cboSort.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboSort.setForeground(new java.awt.Color(32, 136, 203));
+        cboSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã hồ sơ", "Số tiền vay giảm dần", "Số tiền vay tăng dần", "Ngày vay giảm dần", "Ngày vay tăng dần", "Ngày hết hạn giảm dần", "Ngày hết hạn tăng dần" }));
+        cboSort.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboSortPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
+        chkIsPay.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        chkIsPay.setForeground(new java.awt.Color(32, 136, 203));
+        chkIsPay.setText("Chưa thanh toán");
+        chkIsPay.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkIsPayItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
         pnlTimKiem.setLayout(pnlTimKiemLayout);
         pnlTimKiemLayout.setHorizontalGroup(
             pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTimKiem2)
+                .addComponent(txtTimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(chkIsPay)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboSort, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlTimKiemLayout.setVerticalGroup(
             pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTimKiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTimKiem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(cboSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkIsPay))
                 .addContainerGap())
         );
 
@@ -660,10 +745,10 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         pnlDanhSach.setLayout(pnlDanhSachLayout);
         pnlDanhSachLayout.setHorizontalGroup(
             pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDanhSachLayout.createSequentialGroup()
+            .addGroup(pnlDanhSachLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 2149, Short.MAX_VALUE)
+                .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -685,10 +770,10 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabs)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tabs))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -705,11 +790,11 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1462, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -717,7 +802,7 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fillComboBox();
-        load();
+        load(0);
         setStatus(true);
     }//GEN-LAST:event_formWindowOpened
 
@@ -762,8 +847,34 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tblDanhSachMouseClicked
 
     private void txtTimKiem2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiem2CaretUpdate
-        load();
+        int iSort;
+        if (chkIsPay.isSelected()) {
+            iSort = cboSort.getSelectedIndex()+7;
+        } else {
+            iSort = cboSort.getSelectedIndex();
+        }
+        load(iSort);
     }//GEN-LAST:event_txtTimKiem2CaretUpdate
+
+    private void cboSortPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboSortPopupMenuWillBecomeInvisible
+        int iSort;
+        if (chkIsPay.isSelected()) {
+            iSort = cboSort.getSelectedIndex()+7;
+        } else {
+            iSort = cboSort.getSelectedIndex();
+        }
+        load(iSort);
+    }//GEN-LAST:event_cboSortPopupMenuWillBecomeInvisible
+
+    private void chkIsPayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkIsPayItemStateChanged
+        int iSort;
+        if (chkIsPay.isSelected()) {
+            iSort = cboSort.getSelectedIndex()+7;
+        } else {
+            iSort = cboSort.getSelectedIndex();
+        }
+        load(iSort);
+    }//GEN-LAST:event_chkIsPayItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -809,11 +920,14 @@ public class HoSoVayJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnThem;
     private javax.swing.JComboBox<String> cboLoaiHinhVay;
+    private javax.swing.JComboBox<String> cboSort;
     private javax.swing.JComboBox<String> cboThoiHan;
+    private javax.swing.JCheckBox chkIsPay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

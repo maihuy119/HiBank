@@ -501,7 +501,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
         pnlCapNhatLayout.setHorizontalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCapNhatLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,7 +544,7 @@ public class KhachHangJFrame extends javax.swing.JFrame {
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         pnlCapNhatLayout.setVerticalGroup(
             pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

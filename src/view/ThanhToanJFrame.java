@@ -27,6 +27,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
         initComponents();
         init();
     }
+    
     void init() {
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
@@ -37,6 +38,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
         tblDanhSach.getTableHeader().setForeground(new Color(32, 136, 203));
         tblDanhSach.setRowHeight(25);
     }
+    
     HoSoDAO hsdao = new HoSoDAO();
     
     void load() {
